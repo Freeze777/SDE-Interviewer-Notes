@@ -1,0 +1,58 @@
+"""
+Question:
+Write a function to check whether two given strings are anagram of each other or not.
+An anagram of a string is another string that contains the same characters, only the order of characters can be different.
+
+NOTE : Assume english language alphabets in lowercase for now.
+
+For example,
+1. "abcd" & "dabc"  - YES
+2. "abccc" & "abc"  - NO
+3. "xyz" & "abc"    - NO
+4. "silent" & "listen" - YES
+"""
+"""
+
+Challenge with more questions based on how interviewee performs: 
+- Time complexity and space complexity. Best is O(N) time and O(1) space.
+- Minimum deletions/additions to make them anagrams
+- Large stream of strings, print anagram pairs (scalable solution) ??
+- Write unit tests
+
+"""
+
+
+# O(NlogN) + O(MlogM) time, O(1) space - sorting
+def solve_by_sort(word1, word2):
+    return sorted(word1) == sorted(word2)
+
+
+# O(N+M) time, O(N+M) space - letter counting
+def solve_by_dictionary(word1, word2):
+    from collections import Counter
+    wc1 = Counter(word1)
+    wc2 = Counter(word2)
+    return wc1 == wc2
+
+
+# O(N) time, O(1) space - prime factorization
+def solve_by_prime_number_hash(word1, word2):
+    import operator
+    from functools import reduce
+
+    def get_prime_number_hash(word):
+        return reduce(operator.mul, [letter_code[letter] for letter in word])
+
+    letter_code = {'a': 2, 'b': 3, 'c': 5, 'd': 7, 'e': 11, 'f': 13, 'g': 17, 'h': 19, 'i': 23, 'j': 29, 'k': 31,
+                   'l': 37, 'm': 41, 'n': 43,
+                   'o': 47, 'p': 53, 'q': 59, 'r': 61, 's': 67, 't': 71, 'u': 73, 'v': 79, 'w': 83, 'x': 89, 'y': 97,
+                   'z': 101}
+    return get_prime_number_hash(word1) == get_prime_number_hash(word2)
+
+
+if __name__ == '__main__':
+    w1 = 'listen'
+    w2 = 'silent'
+    print(solve_by_sort(w1, w2))
+    print(solve_by_dictionary(w1, w2))
+    print(solve_by_prime_number_hash(w1, w2))
