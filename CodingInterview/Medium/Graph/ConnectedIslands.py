@@ -36,13 +36,15 @@ def is_valid(matrix, i, j, visited):
     return 0 <= i < m and 0 <= j < n and not visited[i][j] and matrix[i][j] == 1
 
 
-def search(matrix, i, j, visited, size):
+def search(matrix, i, j, visited):
     if not is_valid(matrix, i, j, visited):
-        return
+        return 0
     visited[i][j] = True
-    size[0] += 1
+    size = 1  # size of this unvisited node
     for direction in directions:
-        search(matrix, i + direction[0], j + direction[1], visited, size)
+        # sum up sizes of unvisited connected neighbours
+        size += search(matrix, i + direction[0], j + direction[1], visited)
+    return size
 
 
 def islands(matrix) -> (int, int):
@@ -54,9 +56,7 @@ def islands(matrix) -> (int, int):
     for i in range(row):
         for j in range(col):
             if matrix[i][j] == 1 and not visited[i][j]:
-                size = [0]  # pass by reference
-                search(matrix, i, j, visited, size)
-                max_size = max(max_size, size[0])
+                max_size = max(max_size, search(matrix, i, j, visited))
                 num_islands += 1
     return num_islands, max_size
 
