@@ -22,8 +22,9 @@ https://www.geeksforgeeks.org/find-length-largest-region-boolean-matrix/
 https://www.geeksforgeeks.org/find-number-of-islands/
 
 Things to challenge:
-Do we need to a visited array?
-Efficient query problem. Given i,j find the size of its containing island.
+Solve both number of islands and largest island
+Do we need to use a seperate visited array?
+Efficient query problem : Given i,j find the size of its containing island. we have 10^6 such queries 
 
 """
 
