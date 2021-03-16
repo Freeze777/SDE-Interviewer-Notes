@@ -1,9 +1,9 @@
-from Hard.Trie.Model.TrieNodeModel import TrieNode
 
 """
 
 
 """
+from CodingInterview.Hard.Trie.Model.TrieNodeModel import TrieNode
 
 
 def insert_word(root: TrieNode, word: str):

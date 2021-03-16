@@ -21,8 +21,8 @@ class TreeNode:
                   \
                    8
 """
-from Hard.Trees.Model.TreeNodeModel import TreeNode
-from Hard.Trees.NodeLevel import node_level
+from CodingInterview.Hard.Trees.Model.TreeNodeModel import TreeNode
+from CodingInterview.Hard.Trees.NodeLevel import node_level
 
 """
 Challenging the interviewee:
