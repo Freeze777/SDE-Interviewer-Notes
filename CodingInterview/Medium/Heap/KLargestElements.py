@@ -5,7 +5,7 @@ Given an array of integers find the k largest elements in that array
 https://www.geeksforgeeks.org/k-largestor-smallest-elements-in-an-array/
 """
 
-from heapq import heapreplace, heappop, heapify
+from heapq import heappop, heapify, heappushpop
 from typing import List
 
 
@@ -14,7 +14,7 @@ def k_largest_minheap(arr: List[int], k: int):
     heap = arr[0:k]
     heapify(heap)
     for e in arr[k:]:
-        heapreplace(heap, e)
+        heappushpop(heap, e)
     heap.sort(reverse=True)
     return heap
 
