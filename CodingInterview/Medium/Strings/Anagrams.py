@@ -11,6 +11,8 @@ For example,
 3. "xyz" & "abc"    - NO
 4. "silent" & "listen" - YES
 """
+from typing import List
+
 """
 
 Challenge with more questions based on how interviewee performs: 
@@ -37,22 +39,38 @@ def solve_by_dictionary(word1, word2):
 
 # O(N) time, O(1) space - prime factorization
 def solve_by_prime_number_hash(word1, word2):
+    return get_prime_number_hash(word1) == get_prime_number_hash(word2)
+
+
+def get_prime_number_hash(word):
     import operator
     from functools import reduce
-
-    def get_prime_number_hash(word):
-        return reduce(operator.mul, [letter_code[letter] for letter in word])
-
     letter_code = {'a': 2, 'b': 3, 'c': 5, 'd': 7, 'e': 11, 'f': 13, 'g': 17, 'h': 19, 'i': 23, 'j': 29, 'k': 31,
                    'l': 37, 'm': 41, 'n': 43,
                    'o': 47, 'p': 53, 'q': 59, 'r': 61, 's': 67, 't': 71, 'u': 73, 'v': 79, 'w': 83, 'x': 89, 'y': 97,
                    'z': 101}
-    return get_prime_number_hash(word1) == get_prime_number_hash(word2)
+    if not word:
+        return 0
+    return reduce(operator.mul, [letter_code[letter] for letter in word])
+
+
+def group_anagrams(words: List[str]) -> List[List[str]]:
+    d = {}
+    for w in words:
+        prime_hash = get_prime_number_hash(w)
+        if prime_hash not in d:
+            d[prime_hash] = []
+        d[prime_hash].append(w)
+    return [wrd for wrd in d.values()]
 
 
 if __name__ == '__main__':
+    # anagram test
     w1 = 'listen'
     w2 = 'silent'
     print(solve_by_sort(w1, w2))
     print(solve_by_dictionary(w1, w2))
     print(solve_by_prime_number_hash(w1, w2))
+
+    # group anagram test
+    print(group_anagrams(["eat", "tea", "tan", "ate", "nat", "bat"]))
