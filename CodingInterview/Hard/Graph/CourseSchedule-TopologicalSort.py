@@ -1,9 +1,8 @@
 """
 
 You are given N courses with course Ids [0 to N-1] and some of these courses have pre-requisites.
-Print out any one order in which all courses can be completed or return empty order if all courses cannot be completed.
-
 prerequisites[i] = [ai, bi] this means you must take the course bi before the course ai
+Print out any one order in which all courses can be completed or return empty order if all courses cannot be completed.
 
 Example 1:
 Input: numCourses = 2, prerequisites = [[1,0]]
@@ -25,3 +24,38 @@ Output: [0]
 https://leetcode.com/problems/course-schedule-ii/
 https://www.geeksforgeeks.org/find-the-ordering-of-tasks-from-given-dependencies/
 """
+
+
+def dfs_helper(course, graph, completed_courses, discovered_courses, order):
+    discovered_courses.add(course)
+    if course in graph:
+        for next_course in graph[course]:
+            if next_course not in completed_courses:
+                if next_course in discovered_courses:
+                    completed_courses.add(-1)
+                else:
+                    dfs_helper(next_course, graph, completed_courses, discovered_courses, order)
+    completed_courses.add(course)
+    order.append(course)
+
+
+def course_order(num_courses, pre_requisites):
+    graph = {}
+    for e in pre_requisites:
+        a, b = e
+        if b not in graph:
+            graph[b] = []
+        graph[b].append(a)
+    completed_courses = set()
+    discovered_courses = set()
+    order = []
+    for course in range(num_courses):
+        if course not in completed_courses:
+            dfs_helper(course, graph, completed_courses, discovered_courses, order)
+    return [] if -1 in completed_courses else order[::-1]
+
+
+if __name__ == '__main__':
+    numcourses = 4
+    prerequisites = [[1, 0], [2, 0], [3, 1], [3, 2]]
+    print(course_order(numcourses, prerequisites))
