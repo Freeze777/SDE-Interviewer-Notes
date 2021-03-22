@@ -58,4 +58,10 @@ def course_order(num_courses, pre_requisites):
 if __name__ == '__main__':
     numcourses = 4
     prerequisites = [[1, 0], [2, 0], [3, 1], [3, 2]]
+    """
+        0 --> 1  
+         \     \
+          v     v
+          2 --> 3 
+    """
     print(course_order(numcourses, prerequisites))

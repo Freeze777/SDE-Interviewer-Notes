@@ -21,7 +21,7 @@ class TreeNode:
                   \
                    8
 """
-from CodingInterview.Hard.Trees.Model.TreeNodeModel import TreeNode
+from CodingInterview.Hard.Trees.Model.TreeNodeModel import TreeNode, create_mock_binary_tree
 from CodingInterview.Hard.Trees.NodeLevel import node_level
 
 """
@@ -58,13 +58,6 @@ def node_distance(root_node: TreeNode, key1, key2):
 
 
 if __name__ == '__main__':
-    root = TreeNode(1)
-    root.left = TreeNode(2)
-    root.left.left = TreeNode(4)
-    root.left.right = TreeNode(5)
-    root.right = TreeNode(3)
-    root.right.left = TreeNode(6)
-    root.right.right = TreeNode(7)
-    root.right.left.right = TreeNode(8)
+    root = create_mock_binary_tree()
     print(node_distance(root, 1, 7))
     print(node_distance(root, 8, 7))
