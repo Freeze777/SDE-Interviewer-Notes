@@ -41,58 +41,57 @@ def is_good_orange(grid, i, j):
 
 def rot_adjacent(grid, i, j):
     rotten = []
-    for d in directions:
-        if is_good_orange(grid, i + d[0], j + d[1]):
-            grid[i + d[0]][j + d[1]] = 2
-            rotten.append((i + d[0], j + d[1]))
+    for direction in directions:
+        if is_good_orange(grid, i + direction[0], j + direction[1]):
+            grid[i + direction[0]][j + direction[1]] = 2
+            rotten.append((i + direction[0], j + direction[1]))
     return rotten
 
 
-def oranges_rotting(grid: List[List[int]]) -> int:
+def rotting_oranges(grid: List[List[int]]) -> int:
     m = len(grid)
     n = len(grid[0])
-    queue = deque()
-    good_orange = set()
+    bfs_queue = deque()
+    good_oranges = 0
 
     for i in range(m):
         for j in range(n):
             if grid[i][j] == 2:
-                queue.append((i, j))
+                bfs_queue.append((i, j))
             elif grid[i][j] == 1:
-                good_orange.add((i, j))
+                good_oranges += 1
+    bfs_queue.append(None)
 
-    queue.append(None)
+    return bfs(bfs_queue, good_oranges, grid)
+
+
+def bfs(bfs_queue, good_oranges, grid):
     time = 0
-
-    # BFS
-    while len(queue):
-        nxt = queue.popleft()
+    while len(bfs_queue):
+        nxt = bfs_queue.popleft()
         if nxt is None:
-            if len(queue) == 0:
+            if len(bfs_queue) == 0:
                 break
             else:
                 time += 1
-                queue.append(None)
+                bfs_queue.append(None)
         else:
             next_rots = rot_adjacent(grid, nxt[0], nxt[1])
-            [queue.append(rot) for rot in next_rots]
-
-    for orange in good_orange:
-        if grid[orange[0]][orange[1]] == 1:
-            return -1
-    return time
+            good_oranges -= len(next_rots)
+            [bfs_queue.append(rot) for rot in next_rots]
+    return time if good_oranges == 0 else -1
 
 
 if __name__ == '__main__':
     matrix = [[2, 1, 1],
               [1, 1, 0],
               [0, 1, 1]]
-    print(oranges_rotting(matrix))
+    print(rotting_oranges(matrix))
 
     matrix = [[2, 1, 1],
               [0, 1, 1],
               [1, 0, 1]]
-    print(oranges_rotting(matrix))
+    print(rotting_oranges(matrix))
 
     matrix = [[0, 2]]
-    print(oranges_rotting(matrix))
+    print(rotting_oranges(matrix))
