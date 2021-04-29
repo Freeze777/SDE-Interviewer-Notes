@@ -22,7 +22,7 @@ class TreeNode:
                    8
 """
 from CodingInterview.Hard.Trees.Model.TreeNodeModel import TreeNode, create_mock_binary_tree
-from CodingInterview.Hard.Trees.NodeLevel import node_level
+from CodingInterview.Medium.Trees.NodeLevel import node_level
 
 """
 Challenging the interviewee:

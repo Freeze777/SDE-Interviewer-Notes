@@ -3,6 +3,9 @@
 Given an MxN matrix, find the following:
 1) Number of connected islands
 2) Size of the largest island
+
+def islands(matrix) -> (int, int):
+
 NOTE : An island is continuously connected 1's in the matrix. You can move in all 8 directions.
 example:
 matrix = [
@@ -14,6 +17,15 @@ matrix = [
         ]
 Ans: numberOfIslands: 5, maxSize = 4
 
+matrix = [
+        [1, 0, 0, 0, 1],
+        [0, 1, 0, 1, 0],
+        [0, 0, 1, 0, 0],
+        [0, 1, 0, 1, 0],
+        [1, 0, 0, 0, 1]
+    ]
+Ans: numberOfIslands: 1, maxSize = 9
+
 """
 
 """
@@ -23,7 +35,7 @@ https://www.geeksforgeeks.org/find-number-of-islands/
 
 Things to challenge:
 Solve both number of islands and largest island
-Do we need to use a seperate visited array?
+Do we need to use a separate visited array?
 Efficient query problem : Given i,j find the size of its containing island. we have 10^6 such queries 
 
 """
@@ -51,7 +63,7 @@ def search(matrix, i, j, visited):
 def islands(matrix) -> (int, int):
     row = len(matrix)
     col = len(matrix[0])
-    visited = [[False for j in range(col)] for i in range(row)]
+    visited = [[False for _ in range(col)] for _ in range(row)]
     num_islands = 0
     max_size = 0
     for i in range(row):
