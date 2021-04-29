@@ -36,5 +36,5 @@ def average_levels(root: TreeNode):
 
 
 if __name__ == '__main__':
-    root = create_mock_binary_tree()
-    print(average_levels(root))
+    node = create_mock_binary_tree()
+    print(average_levels(node))

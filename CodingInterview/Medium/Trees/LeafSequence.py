@@ -33,5 +33,7 @@ def leaf_similar(root1: TreeNode, root2: TreeNode) -> bool:
 
 
 if __name__ == '__main__':
-    root = create_mock_binary_tree()
-    print(leaf_similar(root, root))
+    node = create_mock_binary_tree()
+    print(leaf_similar(node, node.right))
+    print(leaf_similar(node, node))
+    print(leaf_similar(node, node.left))
