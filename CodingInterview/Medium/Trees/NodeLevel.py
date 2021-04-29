@@ -1,4 +1,3 @@
-
 """
 
 Find the level of a node from the root in a binary tree.
@@ -15,14 +14,12 @@ from CodingInterview.Hard.Trees.Model.TreeNodeModel import TreeNode
 
 def level_helper(node: TreeNode, key, level):
     if node is None:
-        return -1  # sentinel value
+        return None  # sentinel value
 
     if node.key == key:
         return level
 
-    left_level = level_helper(node.left, key, level + 1)
-
-    return left_level if left_level != -1 else level_helper(node.right, key, level + 1)
+    return level_helper(node.left, key, level + 1) or level_helper(node.right, key, level + 1)
 
 
 def node_level(root_node: TreeNode, key):
