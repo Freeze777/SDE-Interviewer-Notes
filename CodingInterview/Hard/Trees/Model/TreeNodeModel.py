@@ -1,3 +1,6 @@
+from typing import List
+
+
 class TreeNode:
     def __init__(self, x):
         self.key = x
@@ -15,6 +18,8 @@ class TreeNode:
                    8
 
 """
+
+
 def create_mock_binary_tree():
     root = TreeNode(1)
     root.left = TreeNode(2)
@@ -25,3 +30,9 @@ def create_mock_binary_tree():
     root.right.right = TreeNode(7)
     root.right.left.right = TreeNode(8)
     return root
+
+
+def get_tree_nodes(root: TreeNode) -> List[TreeNode]:
+    if root is None:
+        return []
+    return [root.key] + get_tree_nodes(root.left) + get_tree_nodes(root.right)
