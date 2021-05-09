@@ -47,7 +47,7 @@ def bfs(num_vertex, graph):
                     adj_flowers = set(map(flowers.get, adj_list))
                     available_flowers = {1, 2, 3, 4} - adj_flowers
                     flowers[nxt] = available_flowers.pop()
-                    for adj_node in graph[nxt]:
+                    for adj_node in adj_list:
                         bfs_queue.append(adj_node)
                 else:
                     flowers[nxt] = random.randint(1, 4)

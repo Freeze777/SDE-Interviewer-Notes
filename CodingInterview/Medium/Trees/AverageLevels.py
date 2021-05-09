@@ -14,27 +14,35 @@ Ans : [1, 2.5, 5.5, 8]
 
 """
 https://leetcode.com/problems/average-of-levels-in-binary-tree/
+Similar : https://leetcode.com/problems/find-largest-value-in-each-tree-row/
 """
 from CodingInterview.Hard.Trees.Model.TreeNodeModel import create_mock_binary_tree, TreeNode
 from statistics import mean
 
 
-def average_levels_helper(root: TreeNode, avg, level):
+def levels_helper(root: TreeNode, avg, level):
     if root is None:
         return
     if level not in avg:
         avg[level] = []
-    avg[level].append(root.key)
-    average_levels_helper(root.left, avg, level + 1)
-    average_levels_helper(root.right, avg, level + 1)
+    avg[level].append(root.val)
+    levels_helper(root.left, avg, level + 1)
+    levels_helper(root.right, avg, level + 1)
+
+
+def max_levels(root: TreeNode):
+    avg = {}
+    levels_helper(root, avg, 0)
+    return [max(v) for k, v in sorted(avg.items())]
 
 
 def average_levels(root: TreeNode):
     avg = {}
-    average_levels_helper(root, avg, 0)
+    levels_helper(root, avg, 0)
     return [mean(v) for k, v in sorted(avg.items())]
 
 
 if __name__ == '__main__':
     node = create_mock_binary_tree()
     print(average_levels(node))
+    print(max_levels(node))

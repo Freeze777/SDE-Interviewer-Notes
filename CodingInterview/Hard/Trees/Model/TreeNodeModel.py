@@ -3,7 +3,7 @@ from typing import List
 
 class TreeNode:
     def __init__(self, x):
-        self.key = x
+        self.val = x
         self.left = None
         self.right = None
 
@@ -35,4 +35,4 @@ def create_mock_binary_tree():
 def get_tree_nodes(root: TreeNode) -> List[TreeNode]:
     if root is None:
         return []
-    return [root.key] + get_tree_nodes(root.left) + get_tree_nodes(root.right)
+    return [root.val] + get_tree_nodes(root.left) + get_tree_nodes(root.right)

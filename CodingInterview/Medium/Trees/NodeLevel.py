@@ -16,7 +16,7 @@ def level_helper(node: TreeNode, key, level):
     if node is None:
         return None  # sentinel value
 
-    if node.key == key:
+    if node.val == key:
         return level
 
     return level_helper(node.left, key, level + 1) or level_helper(node.right, key, level + 1)

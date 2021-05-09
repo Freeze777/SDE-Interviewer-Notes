@@ -24,7 +24,7 @@ def get_leaf_sequence(root: TreeNode):
     if root is None:
         return []
     if root.left is None and root.right is None:
-        return [root.key]
+        return [root.val]
     return get_leaf_sequence(root.left) + get_leaf_sequence(root.right)
 
 

@@ -21,9 +21,6 @@ class TreeNode:
                   \
                    8
 """
-from CodingInterview.Hard.Trees.Model.TreeNodeModel import TreeNode, create_mock_binary_tree
-from CodingInterview.Medium.Trees.NodeLevel import node_level
-
 """
 Challenging the interviewee:
 - The whole algorithm is centered around LCA : Lowest common ancestor. Best O(N) time, O(N) space.
@@ -33,12 +30,15 @@ Challenging the interviewee:
 - What should we do if we have large number queries for node distances.
 """
 
+from CodingInterview.Hard.Trees.Model.TreeNodeModel import TreeNode, create_mock_binary_tree
+from CodingInterview.Medium.Trees.NodeLevel import node_level
+
 
 def lowest_common_ancestor(root_node: TreeNode, key1, key2):
     if root_node is None:
         return None
 
-    if root_node.key == key1 or root_node.key == key2:
+    if root_node.val == key1 or root_node.val == key2:
         return root_node
 
     left_lca = lowest_common_ancestor(root_node.left, key1, key2)
