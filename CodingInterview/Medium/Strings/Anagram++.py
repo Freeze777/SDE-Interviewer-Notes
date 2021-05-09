@@ -30,7 +30,7 @@ def min_steps(s: str, t: str) -> int:
 
 
 if __name__ == '__main__':
-    # min steps
+    print("# min steps #")
     print(min_steps("friend", "family"))
     print(min_steps("xxyyzz", "xxyyzz"))
     print(min_steps("leetcode", "practice"))
@@ -64,6 +64,49 @@ def find_anagrams(s: str, p: str):
 
 
 if __name__ == '__main__':
-    # find anagrams
+    print("# find anagrams #")
     print(find_anagrams("cbaebabacd", "abc"))
     print(find_anagrams("abab", "ab"))
+
+"""
+Two strings are considered close if you can attain one from the other using the following operations:
+
+Operation 1: Swap any two existing characters.
+For example, abcde -> aecdb
+Operation 2: Transform every occurrence of one existing character into another existing character, and do the same with the other character.
+For example, aacabb -> bbcbaa (all a's turn into b's, and all b's turn into a's)
+You can use the operations on either string as many times as necessary.
+
+Given two strings, word1 and word2, return true if word1 and word2 are close, and false otherwise.
+
+Input: word1 = "abc", word2 = "bca"
+Output: true
+
+Input: word1 = "a", word2 = "aa"
+Output: false
+
+Input: word1 = "cabbba", word2 = "abbccc"
+Output: true
+
+Input: word1 = "cabbba", word2 = "aabbss"
+Output: false
+"""
+"""
+https://leetcode.com/problems/determine-if-two-strings-are-close/
+"""
+
+
+def close_strings(word1: str, word2: str):
+    wc1 = Counter(word1)
+    wc2 = Counter(word2)
+    return True if wc1 == wc2 else sorted(wc1.values()) == sorted(wc2.values()) and wc2.keys() == wc1.keys()
+
+
+if __name__ == '__main__':
+    print("# close strings #")
+    print(close_strings("abc", "bca"))
+    print(close_strings("a", "aa"))
+    print(close_strings("cabbba", "abbccc"))
+    print(close_strings("cabbba", "aabbss"))
+    print(close_strings("uau", "ssx"))
+    print(close_strings("uiuiiuuiuuuuuuwiwuuwiiiiuuuuwwiwuuu", "rppprrpurrrrrurrrurprprprprpuprruur"))
