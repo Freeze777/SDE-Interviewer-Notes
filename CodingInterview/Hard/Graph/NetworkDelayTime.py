@@ -17,7 +17,7 @@ Output: -1
 """
 
 """
-Typical Djikstra implementation
+Typical Dijkstra implementation
 https://leetcode.com/problems/network-delay-time/
 """
 import sys
@@ -26,7 +26,7 @@ from heapq import heappop, heapify, heappush
 from typing import List
 
 
-def bfs(start, num_vertex, graph):
+def dijkstra(start, num_vertex, graph):
     bfs_pq = [(0, start)]
     heapify(bfs_pq)
     shortest_path = defaultdict(lambda: sys.maxsize, {})
@@ -49,7 +49,7 @@ def network_delay_time(times: List[List[int]], n: int, k: int) -> int:
         u, v, w = edge
         graph[u].append((v, w))
     [adj_list.sort(key=lambda x: x[1]) for adj_list in graph.values()]  # optional : to boost performance
-    return bfs(k, n, graph)
+    return dijkstra(k, n, graph)
 
 
 if __name__ == '__main__':
