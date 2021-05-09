@@ -97,8 +97,7 @@ https://leetcode.com/problems/determine-if-two-strings-are-close/
 
 
 def close_strings(word1: str, word2: str):
-    wc1 = Counter(word1)
-    wc2 = Counter(word2)
+    wc1, wc2 = Counter(word1), Counter(word2)
     return True if wc1 == wc2 else sorted(wc1.values()) == sorted(wc2.values()) and wc2.keys() == wc1.keys()
 
 
