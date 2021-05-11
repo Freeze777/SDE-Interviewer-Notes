@@ -14,10 +14,11 @@ For example,
 from typing import List
 
 """
+https://leetcode.com/problems/valid-anagram
 
 Challenge with more questions based on how interviewee performs: 
 - Time complexity and space complexity. Best is O(N) time and O(1) space.
-- Minimum deletions/additions to make them anagrams
+- Increase difficulty : https://leetcode.com/problems/minimum-number-of-steps-to-make-two-strings-anagram/
 - Large stream of strings, print anagram pairs (scalable solution) ??
 - Write unit tests
 

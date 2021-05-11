@@ -36,6 +36,7 @@ if __name__ == '__main__':
     print(min_steps("leetcode", "practice"))
 
 """
+An Anagram of a string is a string that contains the same characters with a different (or the same) ordering.
 Given two strings s and p, return an array of all the start indices of p's anagrams in s. You may return the answer in any order.
 
 Input: s = "cbaebabacd", p = "abc"
@@ -43,9 +44,19 @@ Output: [0,6]
 
 Input: s = "abab", p = "ab"
 Output: [0,1,2]
+
+Input: s = "aaaaaaa", p = "a"
+Output: [0, 1, 2, 3, 4, 5, 6]
+
+Input: s = "aaaaaaa", p = "aa"
+Output: [0, 1, 2, 3, 4, 5]
 """
 """
 https://leetcode.com/problems/find-all-anagrams-in-a-string/
+"""
+"""
+k = ALPHAPET_SIZE
+O(k*(S+P)), O(P)
 """
 
 
@@ -67,6 +78,8 @@ if __name__ == '__main__':
     print("# find anagrams #")
     print(find_anagrams("cbaebabacd", "abc"))
     print(find_anagrams("abab", "ab"))
+    print(find_anagrams("aaaaaaa", "a"))
+    print(find_anagrams("aaaaaaa", "aa"))
 
 """
 Two strings are considered close if you can attain one from the other using the following operations:
