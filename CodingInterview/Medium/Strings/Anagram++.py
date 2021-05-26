@@ -1,7 +1,9 @@
 """
+An Anagram of a string is a string that contains the same characters with a different (or the same) ordering.
+eg: silent -- listen
+
 Given two equal-size strings s and t. In one step you can choose any character of t and replace it with another character.
 Return the minimum number of steps to make t an anagram of s.
-An Anagram of a string is a string that contains the same characters with a different (or the same) ordering.
 
 Input: s = "bab", t = "aba"
 Output: 1
@@ -31,6 +33,8 @@ def min_steps(s: str, t: str) -> int:
 
 if __name__ == '__main__':
     print("# min steps #")
+    print(min_steps("bab", "aba"))
+    print(min_steps("abab", "aaaa"))
     print(min_steps("friend", "family"))
     print(min_steps("xxyyzz", "xxyyzz"))
     print(min_steps("leetcode", "practice"))
