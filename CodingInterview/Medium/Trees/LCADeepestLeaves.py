@@ -15,7 +15,7 @@ https://leetcode.com/problems/lowest-common-ancestor-of-deepest-leaves/
 https://leetcode.com/problems/smallest-subtree-with-all-the-deepest-nodes/
 """
 
-from CodingInterview.Hard.Trees.Model.TreeNodeModel import TreeNode, create_mock_binary_tree, get_tree_nodes
+from CodingInterview.Hard.Trees.Model.TreeNodeModel import TreeNode, create_mock_binary_tree
 
 
 def lca_deepest_leaves_helper(root: TreeNode, level: int) -> (int, TreeNode):

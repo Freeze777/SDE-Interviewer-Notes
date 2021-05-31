@@ -1,14 +1,18 @@
 """
-Given a basic architecture for simple booking system that supports 1k users today.
+Given a basic architecture for simple/minimal booking system that supports 1k users today.
 
 Frontend (1 server) ---> Backend Rest API (1 server) ---> SQL Database (1 server)
 
-Features supported
+Frontend - features a static list of 100 hotels
+Backend - handles all data needs of FE
+Database - stores all the user, hotel and booking info.
+
+Features supported today
 - make a booking - book a hotel
 - see past bookings - all booking made by user in the past.
 - basic user profile - name, email, phone, language, currency etc.
 
-How to scale it for 1 million users?
+Architectural changes to scale this system for 1 million users?
 How to guarantee 99.9% uptime?
 """
 
@@ -21,12 +25,12 @@ Frontend loading very slowly?
 1 billion users?
 
 Expectation:
-- group the traffic to reads and writes (80:20 read-write ratio)
-- microservice architecture preferred. (user service, booking service)
 - horizontal scaling of backend api and frontend with LB.
 - autoscaling for peak traffic
 - caching layer
 - master-slave db architecture
 - db indexing
 - CDN for static content for frontend.
+- group the traffic to reads and writes (80:20 read-write ratio)
+- microservice architecture preferred. (user service, booking service)
 """
