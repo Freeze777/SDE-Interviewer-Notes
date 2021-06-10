@@ -22,13 +22,14 @@ Slow queries?
 How to handle traffic spikes?
 Slow backend?
 Frontend loading very slowly?
+New requirement to track user activity data from frontend. How to handle?
 1 billion users?
 
 Expectation:
 - horizontal scaling of backend api and frontend with LB.
 - autoscaling for peak traffic
 - caching layer
-- master-slave db architecture
+- master-slave db architecture (geo sharded if billion users)
 - db indexing
 - CDN for static content for frontend.
 - group the traffic to reads and writes (80:20 read-write ratio)

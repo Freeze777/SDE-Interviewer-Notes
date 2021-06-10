@@ -31,7 +31,7 @@ Challenging the interviewee:
 """
 
 from CodingInterview.Hard.Trees.Model.TreeNodeModel import TreeNode, create_mock_binary_tree
-from CodingInterview.Medium.Trees.NodeLevel import node_level
+from CodingInterview.Easy.Trees.NodeLevel import node_level
 
 
 def lowest_common_ancestor(root_node: TreeNode, key1, key2):

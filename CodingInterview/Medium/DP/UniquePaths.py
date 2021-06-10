@@ -25,7 +25,9 @@ https://leetcode.com/problems/unique-paths/
 """
 
 
-def unique_paths(m, n, memo={}):
+def unique_paths(m, n, memo=None):
+    if memo is None:
+        memo = {}
     if m == 0 or n == 0:
         return 0
     if m == 1 or n == 1:

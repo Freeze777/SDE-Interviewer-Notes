@@ -14,6 +14,12 @@ Output: 5
 Input: s = "friend", t = "family"
 Output: 4
 
+Input: s = "abab", t = "aaaa"
+Output: 2
+
+Input: s = "xxyyzz", t = "xxyyzz"
+Output: 0
+
 """
 """
 https://leetcode.com/problems/minimum-number-of-steps-to-make-two-strings-anagram/
