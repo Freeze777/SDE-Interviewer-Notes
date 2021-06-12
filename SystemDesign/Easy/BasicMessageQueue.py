@@ -9,8 +9,10 @@ What architectural changes to keep our customers happy?
 
 """
 
+Expected:
 Add a message queue between them.
-Order API submits a message and return success to Frontend end.
-Frontend can keep polling a different api to get payment status or it can give order id back to customer 
-or payment api will charge the customer later.
+Order API produces a message to the queue and return success to Food App.
+consumers at payment api side will consume the messages and invoke payment api for processing.
+Frontend can keep polling a different api to get payment status 
+OR it can give order id back to customer and let payment api charge the customer later.
 """
