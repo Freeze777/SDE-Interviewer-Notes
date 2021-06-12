@@ -8,6 +8,11 @@ What architectural changes to keep our customers happy?
 """
 
 """
+Follow ups:
+How does food app know payment got processed?
+Payment API went down? what happens to messages? how ensure message is not lost?
+Payment API got huge backlog of messages in the queue, what do we do?
+Duplicate payments issue. how to resolve?
 
 Expected:
 Add a message queue between them.
