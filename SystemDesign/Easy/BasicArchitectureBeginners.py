@@ -22,7 +22,7 @@ Slow db queries?
 How to handle traffic spikes?
 Slow backend?
 Frontend loading very slowly?
-New requirement to track user activity data from frontend. How to handle?
+New requirement to track user activity data from frontend. How to handle realtime vs delayed statistics?
 1 billion users?
 
 Expectation:
@@ -34,4 +34,5 @@ Expectation:
 - CDN for static content for frontend.
 - group the traffic to reads and writes (80:20 read-write ratio) and optimise these paths.
 - microservice architecture preferred. (user service, booking service)
+- User activity tracking is done by sending message to kafka --> hadoop --> map reduce aggregator --> Data Warehouse
 """
