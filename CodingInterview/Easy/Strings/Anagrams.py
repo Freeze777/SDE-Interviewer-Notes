@@ -31,11 +31,9 @@ def solve_by_sort(word1, word2):
 
 
 # O(N+M) time, O(N+M) space - letter counting
-def solve_by_dictionary(word1, word2):
+def solve_by_letter_count(word1, word2):
     from collections import Counter
-    wc1 = Counter(word1)
-    wc2 = Counter(word2)
-    return wc1 == wc2
+    return Counter(word1) == Counter(word2)
 
 
 # O(N) time, O(1) space - prime factorization
@@ -50,9 +48,7 @@ def get_prime_number_hash(word):
                    'l': 37, 'm': 41, 'n': 43,
                    'o': 47, 'p': 53, 'q': 59, 'r': 61, 's': 67, 't': 71, 'u': 73, 'v': 79, 'w': 83, 'x': 89, 'y': 97,
                    'z': 101}
-    if not word:
-        return 0
-    return reduce(operator.mul, [letter_code[letter] for letter in word])
+    return 0 if not word else reduce(operator.mul, [letter_code[letter] for letter in word])
 
 
 def group_anagrams(words: List[str]) -> List[List[str]]:
@@ -70,7 +66,7 @@ if __name__ == '__main__':
     w1 = 'listen'
     w2 = 'silent'
     print(solve_by_sort(w1, w2))
-    print(solve_by_dictionary(w1, w2))
+    print(solve_by_letter_count(w1, w2))
     print(solve_by_prime_number_hash(w1, w2))
 
     # group anagram test
