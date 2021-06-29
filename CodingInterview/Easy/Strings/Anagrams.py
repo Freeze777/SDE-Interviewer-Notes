@@ -51,6 +51,9 @@ def get_prime_number_hash(word):
     return 0 if not word else reduce(operator.mul, [letter_code[letter] for letter in word])
 
 
+"""
+https://leetcode.com/problems/group-anagrams/
+"""
 def group_anagrams(words: List[str]) -> List[List[str]]:
     d = {}
     for w in words:
