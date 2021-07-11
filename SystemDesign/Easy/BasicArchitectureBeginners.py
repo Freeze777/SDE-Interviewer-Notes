@@ -22,6 +22,7 @@ Slow db queries?
 How to handle traffic spikes?
 Slow backend? How to debug?
 Frontend loading very slowly? How to debug?
+New requirement to add Payment service. A payment takes 1 minute to process. 
 New requirement to track user activity data from frontend. How to handle realtime vs delayed statistics?
 How to generate unique bookingId across DCs?
 1 billion users?
