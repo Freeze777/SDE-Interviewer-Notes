@@ -8,11 +8,15 @@ Every minute, any fresh orange that is 4-directionally adjacent to a rotten oran
 
 Return the minimum number of minutes that must elapse until no cell has a fresh orange. If this is impossible, return -1.
 
-Input: grid = [[2,1,1],[1,1,0],[0,1,1]]
+Input: grid =  [[2,1,1],
+                [1,1,0],
+                [0,1,1]]
 Output: 4
 Example 2:
 
-Input: grid = [[2,1,1],[0,1,1],[1,0,1]]
+Input: grid =  [[2,1,1],
+                [0,1,1],
+                [1,0,1]]
 Output: -1
 Explanation: The orange in the bottom left corner (row 2, column 0) is never rotten, because rotting only happens 4-directionally.
 Example 3:
@@ -94,4 +98,10 @@ if __name__ == '__main__':
     print(rotting_oranges(matrix))
 
     matrix = [[0, 2]]
+    print(rotting_oranges(matrix))
+
+    matrix = [[2, 1, 1],
+              [0, 1, 1],
+              [1, 0, 1],
+              [2, 0, 0]]
     print(rotting_oranges(matrix))
