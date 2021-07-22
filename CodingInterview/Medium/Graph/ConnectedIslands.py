@@ -40,32 +40,26 @@ Efficient query problem : Given i,j find the size of its containing island. we h
 
 """
 
-directions = [(1, 1), (1, 0), (1, -1), (0, 1), (0, -1), (-1, 1), (-1, 0), (-1, -1)]
-
 
 def is_valid(matrix, i, j, visited):
-    m = len(matrix)
-    n = len(matrix[0])
+    m, n = len(matrix), len(matrix[0])
     return 0 <= i < m and 0 <= j < n and not visited[i][j] and matrix[i][j] == 1
 
 
 def search(matrix, i, j, visited):
+    directions = [(1, 1), (1, 0), (1, -1), (0, 1), (0, -1), (-1, 1), (-1, 0), (-1, -1)]
     if not is_valid(matrix, i, j, visited):
         return 0
-    visited[i][j] = True
-    size = 1  # size of this unvisited node
+    visited[i][j], size = True, 1
     for direction in directions:
-        # sum up sizes of unvisited connected neighbours
         size += search(matrix, i + direction[0], j + direction[1], visited)
     return size
 
 
 def islands(matrix) -> (int, int):
-    row = len(matrix)
-    col = len(matrix[0])
+    row, col = len(matrix), len(matrix[0])
     visited = [[False for _ in range(col)] for _ in range(row)]
-    num_islands = 0
-    max_size = 0
+    num_islands = max_size = 0
     for i in range(row):
         for j in range(col):
             if matrix[i][j] == 1 and not visited[i][j]:
