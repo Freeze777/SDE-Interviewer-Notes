@@ -3,6 +3,9 @@ Given a character array we need to compress it in-place as follows:
 aaabcccdd -> a3b1c3d2 (no resizing needed)
 abcd -> a1b1c1d1 (need resizing)
 """
+"""
+Amazon interview question
+"""
 from typing import List
 
 
