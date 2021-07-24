@@ -1,10 +1,8 @@
-import sys
-from collections import deque
-from typing import List
-
-from CodingInterview.Hard.Trees.Model.TreeNodeModel import TreeNode, create_mock_binary_tree
-
 """
+Top view of a binary tree is the set of nodes visible when the tree is viewed from the top. 
+Given a binary tree, print the top view of it. The output nodes can be printed in any order.
+
+
                 1
              /     \
             2       3
@@ -13,7 +11,14 @@ from CodingInterview.Hard.Trees.Model.TreeNodeModel import TreeNode, create_mock
                   \
                    8
 
+Output : [4, 2, 6, 1, 3, 7]
 """
+
+import sys
+from collections import deque
+from typing import List
+
+from CodingInterview.Hard.Trees.Model.TreeNodeModel import TreeNode, create_mock_binary_tree
 
 
 def top_view(root: TreeNode) -> List[int]:
@@ -25,10 +30,10 @@ def top_view(root: TreeNode) -> List[int]:
         node = bfs_queue.pop()
         if node.vertical_level > max_vertical_level:
             top_view_nodes.append(node.val)
+            max_vertical_level = node.vertical_level
         elif node.vertical_level < min_vertical_level:
             top_view_nodes.appendleft(node.val)
-        max_vertical_level = max(node.vertical_level, max_vertical_level)
-        min_vertical_level = min(node.vertical_level, min_vertical_level)
+            min_vertical_level = node.vertical_level
         if node.left is not None:
             node.left.vertical_level = node.vertical_level - 1
             bfs_queue.append(node.left)
