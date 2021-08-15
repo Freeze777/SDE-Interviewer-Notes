@@ -35,10 +35,7 @@ from CodingInterview.Easy.Trees.NodeLevel import node_level
 
 
 def lowest_common_ancestor(root_node: TreeNode, key1, key2):
-    if root_node is None:
-        return None
-
-    if root_node.val == key1 or root_node.val == key2:
+    if root_node is None or root_node.val == key1 or root_node.val == key2:
         return root_node
 
     left_lca = lowest_common_ancestor(root_node.left, key1, key2)
@@ -52,8 +49,7 @@ def lowest_common_ancestor(root_node: TreeNode, key1, key2):
 
 def node_distance(root_node: TreeNode, key1, key2):
     lca = lowest_common_ancestor(root_node, key1, key2)
-    key1_level = node_level(lca, key1) - 1
-    key2_level = node_level(lca, key2) - 1
+    key1_level, key2_level = node_level(lca, key1) - 1, node_level(lca, key2) - 1
     return key1_level + key2_level
 
 
@@ -61,3 +57,6 @@ if __name__ == '__main__':
     root = create_mock_binary_tree()
     print(node_distance(root, 1, 7))
     print(node_distance(root, 8, 7))
+    print(node_distance(root, 1, 8))
+    print(node_distance(root, 4, 8))
+    print(node_distance(root, 8, 8))
