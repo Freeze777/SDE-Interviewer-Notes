@@ -12,6 +12,14 @@ Output: 58
 Example 2:
 ropes = [4, 3, 2, 6]
 Output: 29
+
+Example 3:
+ropes = [8, 4, 6, 7, 12]
+Output: 84
+
+Example 4:
+ropes = [4, 2, 7, 6, 9]
+Output: 62
 """
 
 
@@ -29,5 +37,9 @@ def connect_ropes(ropes) -> int:
 if __name__ == '__main__':
     print(connect_ropes([8, 4, 6, 12]))
     print(connect_ropes([4, 3, 2, 6]))
+    print(connect_ropes([8, 4, 6, 7, 12]))
+    print(connect_ropes([4, 2, 7, 6, 9]))
+
     print(connect_ropes([4, 3]))
     print(connect_ropes([4]))
+
