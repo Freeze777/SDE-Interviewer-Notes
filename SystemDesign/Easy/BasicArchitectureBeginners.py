@@ -8,7 +8,7 @@ Backend - handles all data needs of FE
 Database - stores all the user, hotel and booking info.
 
 Features supported today
-- make a booking - book a hotel with checkin and checkout date.
+- make a booking - book a hotel with checkin and checkout date. payments are out of scope, assume pay at hotel for now.
 - see past bookings - all booking made by user in the past.
 - basic user profile - name, email, phone, language, currency etc.
 
