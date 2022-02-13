@@ -25,9 +25,9 @@ Output: 0
 https://leetcode.com/problems/minimum-number-of-steps-to-make-two-strings-anagram/
 
 Challenge:
-- expose this an REST API -> define API definition.
+- expose this a REST API -> define API definition.
 - You have 1 GB of RAM and 2 files with size 4 GBs each containing s and t. How would you solve this problem efficiently? 
-- Scale this to setup where we ingest lots of huge files (TB sizes) daily.
+- Scale this to set up where we ingest lots of huge files (TB sizes) daily.
 """
 
 from collections import defaultdict, Counter
