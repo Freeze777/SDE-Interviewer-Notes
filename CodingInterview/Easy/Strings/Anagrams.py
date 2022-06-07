@@ -18,10 +18,11 @@ https://leetcode.com/problems/valid-anagram
 
 Challenge with more questions based on how interviewee performs: 
 - Time complexity and space complexity. Best is O(N) time and O(1) space.
+- large inputs how to solve -> multi threading
+- large inputs in file to API service -> how to scale
 - Increase difficulty : https://leetcode.com/problems/minimum-number-of-steps-to-make-two-strings-anagram/
 - Large stream of strings, print anagram pairs (scalable solution) ??
 - Write unit tests
-
 """
 
 
