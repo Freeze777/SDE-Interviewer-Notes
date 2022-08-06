@@ -70,8 +70,18 @@ def get_tree_nodes(root: TreeNode) -> List[str]:
     return [root.__str__()] + get_tree_nodes(root.left) + get_tree_nodes(root.right)
 
 
+def get_inorder_nodes(root: TreeNode) -> List[int]:
+    if root is None:
+        return []
+    return get_inorder_nodes(root.left) + [root.val] + get_inorder_nodes(root.right)
+
+
 def pretty_print_tree(node: TreeNode, level=0):
     if node is not None:
         pretty_print_tree(node.right, level + 1)
         print(' ' * 4 * level + '->', node.val)
         pretty_print_tree(node.left, level + 1)
+
+
+if __name__ == '__main__':
+    print(get_inorder_nodes(create_mock_binary_tree()))
