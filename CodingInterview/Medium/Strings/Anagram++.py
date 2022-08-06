@@ -8,6 +8,8 @@ Return the minimum number of steps to make t an anagram of s.
 Input: s = "bab", t = "aba"
 Output: 1
 
+--------------------
+
 Input: s = "leetcode", t = "practice"
 Output: 5
 
