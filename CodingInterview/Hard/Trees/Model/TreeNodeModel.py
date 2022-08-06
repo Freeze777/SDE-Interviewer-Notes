@@ -1,11 +1,11 @@
-from typing import List
+from typing import List, Optional
 
 
 class TreeNode:
     def __init__(self, x):
         self.val: int = x
-        self.left: TreeNode = None
-        self.right: TreeNode = None
+        self.left: Optional[TreeNode] = None
+        self.right: Optional[TreeNode] = None
         self.vertical_level: int = 0
         self.depth: int = 0
 
