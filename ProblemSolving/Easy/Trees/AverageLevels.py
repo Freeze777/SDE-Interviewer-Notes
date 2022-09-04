@@ -16,7 +16,7 @@ Ans : [1, 2.5, 5.5, 8]
 https://leetcode.com/problems/average-of-levels-in-binary-tree/
 Similar : https://leetcode.com/problems/find-largest-value-in-each-tree-row/
 """
-from CodingInterview.Hard.Trees.Model.TreeNodeModel import create_mock_binary_tree, TreeNode
+from ProblemSolving.Hard.Trees.Model.TreeNodeModel import create_mock_binary_tree, TreeNode
 from statistics import mean
 
 

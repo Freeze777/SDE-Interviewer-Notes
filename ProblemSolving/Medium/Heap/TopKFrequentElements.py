@@ -6,7 +6,7 @@ https://leetcode.com/problems/top-k-frequent-words/
 from collections import Counter
 from typing import List
 
-from CodingInterview.Medium.Heap.KLargestElements import k_largest_minheap
+from ProblemSolving.Medium.Heap.KLargestElements import k_largest_minheap
 
 
 def top_k_frequent(elements: List[int], k: int):

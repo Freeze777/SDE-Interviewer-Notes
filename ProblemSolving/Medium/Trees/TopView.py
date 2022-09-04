@@ -1,5 +1,5 @@
 """
-Top view of a binary tree is the set of nodes visible when the tree is viewed from the top. 
+Top view of a binary tree is the set of nodes visible when the tree is viewed from the top.
 Given a binary tree, print the top view of it. The output nodes can be printed in any order.
 
 
@@ -18,7 +18,7 @@ import sys
 from collections import deque
 from typing import List
 
-from CodingInterview.Hard.Trees.Model.TreeNodeModel import TreeNode, create_mock_binary_tree
+from ProblemSolving.Hard.Trees.Model.TreeNodeModel import TreeNode, create_mock_binary_tree
 
 
 def top_view(root: TreeNode) -> List[int]:

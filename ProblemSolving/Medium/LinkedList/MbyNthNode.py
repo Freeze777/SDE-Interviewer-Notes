@@ -17,7 +17,7 @@ My Amazon Interview Question
 
 """
 
-from CodingInterview.Medium.LinkedList.Model.LinkedListNodeModel import LinkedListNode, create_mock_linked_list, \
+from ProblemSolving.Medium.LinkedList.Model.LinkedListNodeModel import LinkedListNode, create_mock_linked_list, \
     get_linked_list_nodes
 
 

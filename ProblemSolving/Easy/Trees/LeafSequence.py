@@ -1,4 +1,4 @@
-from CodingInterview.Hard.Trees.Model.TreeNodeModel import TreeNode, create_mock_binary_tree
+from ProblemSolving.Hard.Trees.Model.TreeNodeModel import TreeNode, create_mock_binary_tree
 
 """
 Consider all the leaves of a binary tree, from left to right order, the values of those leaves form a leaf value sequence.

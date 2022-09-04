@@ -4,12 +4,12 @@ Find the level of a node from the root in a binary tree.
 
             3       -- level 1
           /   \
-        2       5   -- level 2    
+        2       5   -- level 2
       /  \
     1     4         -- level 3
 
 """
-from CodingInterview.Hard.Trees.Model.TreeNodeModel import TreeNode
+from ProblemSolving.Hard.Trees.Model.TreeNodeModel import TreeNode
 
 
 def level_helper(node: TreeNode, key, level):

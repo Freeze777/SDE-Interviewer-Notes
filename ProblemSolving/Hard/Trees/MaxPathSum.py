@@ -29,7 +29,7 @@ Ans : 42
 
 import sys
 
-from CodingInterview.Hard.Trees.Model.TreeNodeModel import create_mock_binary_tree, TreeNode, \
+from ProblemSolving.Hard.Trees.Model.TreeNodeModel import create_mock_binary_tree, TreeNode, \
     create_mock_binary_tree_with_negative
 
 

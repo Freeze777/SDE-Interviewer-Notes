@@ -3,7 +3,7 @@
 
 
 """
-from CodingInterview.Hard.Trie.Model.TrieNodeModel import TrieNode
+from ProblemSolving.Hard.Trie.Model.TrieNodeModel import TrieNode
 
 
 def insert_word(root: TrieNode, word: str):

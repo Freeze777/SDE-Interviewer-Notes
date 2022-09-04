@@ -23,6 +23,8 @@ Challenge with more questions based on how interviewee performs:
 - Increase difficulty : https://leetcode.com/problems/minimum-number-of-steps-to-make-two-strings-anagram/
 - Large stream of strings, print anagram pairs (scalable solution) ??
 - Write unit tests
+
+different way of asking : https://webeduclick.com/python-program-print-histogram-frequencies-characters-in-string/
 """
 
 

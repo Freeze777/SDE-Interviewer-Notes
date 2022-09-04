@@ -32,8 +32,8 @@ Challenging the interviewee:
 - What should we do if we have large number queries for node distances.
 """
 
-from CodingInterview.Hard.Trees.Model.TreeNodeModel import TreeNode, create_mock_binary_tree
-from CodingInterview.Easy.Trees.NodeLevel import node_level
+from ProblemSolving.Hard.Trees.Model.TreeNodeModel import TreeNode, create_mock_binary_tree
+from ProblemSolving.Easy.Trees.NodeLevel import node_level
 
 
 def lowest_common_ancestor(root_node: TreeNode, key1, key2):
