@@ -4,7 +4,8 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * <a href="https://leetcode.com/problems/hand-of-straights/">...</a>
+ * <a href="https://leetcode.com/problems/hand-of-straights/">https://leetcode.com/problems/hand-of-straights</a>
+ * <a href="https://leetcode.com/problems/divide-array-in-sets-of-k-consecutive-numbers/">https://leetcode.com/problems/divide-array-in-sets-of-k-consecutive-numbers/</a>
  */
 public class HandOfStraights {
 
@@ -32,5 +33,8 @@ public class HandOfStraights {
         HandOfStraights hos = new HandOfStraights();
         System.out.println(hos.isNStraightHand(new int[]{1, 2, 3, 6, 2, 3, 4, 7, 8}, 3));
         System.out.println(hos.isNStraightHand(new int[]{1, 2, 3, 4, 5}, 4));
+        System.out.println(hos.isNStraightHand(new int[]{1, 2, 3, 3, 4, 4, 5, 6}, 4));
+        System.out.println(hos.isNStraightHand(new int[]{3, 2, 1, 2, 3, 4, 3, 4, 5, 9, 10, 11}, 3));
+        System.out.println(hos.isNStraightHand(new int[]{1, 2, 3, 4}, 3));
     }
 }
