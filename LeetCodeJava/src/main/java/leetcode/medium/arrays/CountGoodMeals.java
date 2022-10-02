@@ -1,9 +1,12 @@
-package leetcode.medium;
+package leetcode.medium.arrays;
 
 import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * <a href="https://leetcode.com/problems/count-good-meals/">https://leetcode.com/problems/count-good-meals/</a>
+ */
 public class CountGoodMeals {
 
     private static int countGoodMeals(int[] deliciousness) {

@@ -1,7 +1,10 @@
-package leetcode.medium;
+package leetcode.medium.dp;
 
 import java.util.Arrays;
 
+/**
+ * <a href="https://leetcode.com/problems/jump-game-ii/">https://leetcode.com/problems/jump-game-ii/</a>
+ */
 public class JumpGameII {
     public int jump(int[] nums) {
         if (nums.length == 1)

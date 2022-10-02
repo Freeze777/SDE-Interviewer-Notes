@@ -1,5 +1,8 @@
 package leetcode.medium;
 
+/**
+ * <a href="https://leetcode.com/problems/sum-of-square-numbers/">https://leetcode.com/problems/sum-of-square-numbers/</a>
+ */
 public class SumOfSquareNumbers {
 
     public boolean judgeSquareSum(int c) {
