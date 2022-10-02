@@ -1,4 +1,4 @@
-package leetcode.medium;
+package leetcode.medium.math;
 
 /**
  * <a href="https://leetcode.com/problems/sum-of-square-numbers/">https://leetcode.com/problems/sum-of-square-numbers/</a>

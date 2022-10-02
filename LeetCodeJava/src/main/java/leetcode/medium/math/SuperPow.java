@@ -1,5 +1,8 @@
-package leetcode.medium;
+package leetcode.medium.math;
 
+/**
+ * <a href="https://leetcode.com/problems/super-pow/">https://leetcode.com/problems/super-pow/</a>
+ */
 public class SuperPow {
     static final int MOD = 1337;
 
