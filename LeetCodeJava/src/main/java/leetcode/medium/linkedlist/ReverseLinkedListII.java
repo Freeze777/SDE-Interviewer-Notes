@@ -25,11 +25,10 @@ public class ReverseLinkedListII extends ReverseLinkedList {
 
     public static void main(String[] args) {
         ReverseLinkedListII test = new ReverseLinkedListII();
-        test.printList(test.reverseBetween(test.createStub(5), 1, 5));
-        test.printList(test.reverseBetween(test.createStub(5), 1, 4));
-        test.printList(test.reverseBetween(test.createStub(5), 2, 4));
-        test.printList(test.reverseBetween(test.createStub(5), 2, 5));
-        test.printList(test.reverseBetween(test.createStub(5), 3, 4));
-
+        test.printList(test.reverseBetween(ListNode.createStub(5), 1, 5));
+        test.printList(test.reverseBetween(ListNode.createStub(5), 1, 4));
+        test.printList(test.reverseBetween(ListNode.createStub(5), 2, 4));
+        test.printList(test.reverseBetween(ListNode.createStub(5), 2, 5));
+        test.printList(test.reverseBetween(ListNode.createStub(5), 3, 4));
     }
 }
