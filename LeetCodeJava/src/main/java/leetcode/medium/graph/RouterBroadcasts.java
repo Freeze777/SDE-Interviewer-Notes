@@ -5,16 +5,16 @@ import java.util.stream.Collectors;
 
 /**
  * Google interview question:<br>
- * We have routers placed at various coordinates in a 2D plane.
- * All the routers have a signal radial range of 10.
- * If a router receives a message it will broadcast the message immediately to all its reachable routers and will shut itself down.
+ * We have routers placed at various (x,y) coordinates in a 2D plane.
+ * All the routers have a signal range of 10 and each router has a unique name.
+ * If a router receives a message it will immediately broadcast the message to all its reachable routers and will shut itself down.
  * <p>
  * Assume you already are provided with an implementation of the distance(a,b) method.
  * <p>
- * Given a list of router with a source router and target router, return true if source router can broadcast a message to target router.
+ * Given a list of routers, a source router and a target router, return true if source router can broadcast a message to target router.
  * <p>
  * Follow up:
- * Refactor the code to handle the case where a router will only broadcast to the nearest reachable routes which are within the minimum distance from it.
+ * Refactor the code to handle the case where a router will only broadcast to the nearest reachable routers that are within the minimum distance from it.
  * <p>
  * class Router{ <br>
  * String name; <br>
@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
  * <p>
  * very similar to : <a href="https://leetcode.com/problems/detonate-the-maximum-bombs/">https://leetcode.com/problems/detonate-the-maximum-bombs/</a>
  **/
-public class RouterBroadCast {
+public class RouterBroadcasts {
 
     private static class Router {
         String name;
@@ -66,8 +66,8 @@ public class RouterBroadCast {
                             && !shutdownRouters.contains(nextRouter.name)
                             && isInRange(broadcastRouter, nextRouter))
                     .collect(Collectors.toList());
-            //bfsQ.addAll(routersInRange);
-            bfsQ.addAll(nearestRouters(broadcastRouter, routersInRange)); // for follow-up
+            //bfsQ.addAll(routersInRange); // first version
+            bfsQ.addAll(nearestRouters(broadcastRouter, routersInRange)); // follow-up version
             shutdownRouters.add(broadcastRouter.name);
         }
         return false;
@@ -77,19 +77,20 @@ public class RouterBroadCast {
         double minDistance = Double.MAX_VALUE;
         HashMap<Double, List<Router>> routersByDistance = new HashMap<>();
         for (Router router : routersInRange) {
-            double d = distance(source, router);
-            minDistance = Math.min(d, minDistance);
-            routersByDistance.putIfAbsent(d, new LinkedList<>());
-            routersByDistance.computeIfPresent(d, (k, v) -> {
-                v.add(router);
-                return v;
+            double dist = distance(source, router);
+            minDistance = Math.min(dist, minDistance);
+            routersByDistance.putIfAbsent(dist, new LinkedList<>());
+            routersByDistance.computeIfPresent(dist, (d, routers) -> {
+                routers.add(router);
+                return routers;
             });
         }
         return routersByDistance.getOrDefault(minDistance, new LinkedList<>());
     }
 
     public static void main(String[] args) {
-        RouterBroadCast rbc = new RouterBroadCast();
+        // inital version testcases
+        RouterBroadcasts rbc = new RouterBroadcasts();
         Router A = new Router("A", 0, 0);
         Router B = new Router("B", 0, 8);
         Router C = new Router("C", 0, 17);
@@ -98,7 +99,7 @@ public class RouterBroadCast {
         System.out.println(rbc.isReachable(A, C, Arrays.asList(A, B, C, D))); //true
         System.out.println(rbc.isReachable(A, D, Arrays.asList(A, B, C, D))); //false
 
-        // follow-up question testcases
+        // follow-up version testcases
         Router E = new Router("E", 4, 0);
         Router F = new Router("F", 0, 4);
         Router G = new Router("G", 0, 17);
