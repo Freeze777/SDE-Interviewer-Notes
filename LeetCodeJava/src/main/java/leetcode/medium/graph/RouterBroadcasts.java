@@ -4,26 +4,18 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * Google interview question:<br>
- * We have routers placed at various (x,y) coordinates in a 2D plane.
- * All the routers have a signal range of 10 and each router has a unique name.
- * If a router receives a message it will immediately broadcast the message to all its reachable routers and will shut itself down.
+ * We have several WiFi routers placed at various (x,y) coordinates in a given 2D plane.
+ * All the routers have a signal range of 10 units and each router has a unique name.
+ * If a router receives a message, it will broadcast it to all reachable routers within its range and shut itself down almost instantly.
+ * For simplicity, assume you are already provided with an implementation of the distance(Router a, Router b) method.
+ * Given a list of routers, a source router, and a target router, return true if the source router can broadcast a message to the target router.
  * <p>
- * Assume you already are provided with an implementation of the distance(a,b) method.
- * <p>
- * Given a list of routers, a source router and a target router, return true if source router can broadcast a message to target router.
- * <p>
- * Follow up:
- * Refactor the code to handle the case where a router will only broadcast to the nearest reachable routers that are within the minimum distance from it.
- * <p>
- * class Router{ <br>
- * String name; <br>
- * int x,y; <br>
+ * Router {
+ * string name;
+ * int x,y;
  * }
- * <p>
- * public isReachable(Router source, Router target, List<Router> allRouters) {}
- * <p>
- * very similar to : <a href="https://leetcode.com/problems/detonate-the-maximum-bombs/">https://leetcode.com/problems/detonate-the-maximum-bombs/</a>
+ * bool isReachable(Router source, Router target, List<Router> routers) {
+ * }
  **/
 public class RouterBroadcasts {
 
@@ -39,8 +31,6 @@ public class RouterBroadcasts {
 
         @Override
         public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
             Router router = (Router) o;
             return x == router.x && y == router.y && name.equals(router.name);
         }
@@ -89,7 +79,7 @@ public class RouterBroadcasts {
     }
 
     public static void main(String[] args) {
-        // inital version testcases
+        // initial version testcases
         RouterBroadcasts rbc = new RouterBroadcasts();
         Router A = new Router("A", 0, 0);
         Router B = new Router("B", 0, 8);
@@ -102,9 +92,8 @@ public class RouterBroadcasts {
         // follow-up version testcases
         Router E = new Router("E", 4, 0);
         Router F = new Router("F", 0, 4);
-        Router G = new Router("G", 0, 17);
         Router H = new Router("H", 6, 8);
-        System.out.println(rbc.isReachable(A, G, Arrays.asList(A, B, E, F, G))); //true
-        System.out.println(rbc.isReachable(A, G, Arrays.asList(A, B, E, F, G, H))); //false
+        System.out.println(rbc.isReachable(A, C, Arrays.asList(A, B, C, E, F))); //true
+        System.out.println(rbc.isReachable(A, C, Arrays.asList(A, B, C, E, F, H))); //false
     }
 }
