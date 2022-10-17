@@ -1,7 +1,6 @@
 package leetcode.medium.unionfind;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class UnionFind {
     private final Map<Integer, Integer> parents = new HashMap<>();
@@ -37,6 +36,17 @@ public class UnionFind {
             groupSizes.put(i, 1);
         }
         size = numGroups = numVertices;
+    }
+
+    public Collection<Set<Integer>> getGroups() {
+        HashMap<Integer, Set<Integer>> groups = new HashMap<>();
+        for (int i = 0; i < size; i++) {
+            int parent = find(i);
+            if (!groups.containsKey(parent)) groups.put(parent, new HashSet<>());
+            groups.get(parent).add(i);
+
+        }
+        return groups.values();
     }
 
     public int find(int vertex) {
