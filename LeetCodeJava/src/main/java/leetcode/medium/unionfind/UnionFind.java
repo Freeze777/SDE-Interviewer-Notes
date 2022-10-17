@@ -49,19 +49,21 @@ public class UnionFind {
     public boolean union(int vertex, int otherVertex) {
         int vertexParent = find(vertex);
         int otherVertexParent = find(otherVertex);
+        if (vertexParent == otherVertexParent) return true;
+
         int vertexGroupSize = groupSizes.get(vertexParent);
         int otherVertexGroupSize = groupSizes.get(otherVertexParent);
+        int deadParent = vertexParent;
+        int finalParent = otherVertexParent;
         if (vertexGroupSize > otherVertexGroupSize) {
-            parents.put(otherVertexParent, vertexParent);
-            groupSizes.remove(otherVertexParent);
-            groupSizes.put(vertexParent, vertexGroupSize + otherVertexGroupSize);
-        } else {
-            parents.put(vertexParent, otherVertexParent);
-            groupSizes.remove(vertexParent);
-            groupSizes.put(otherVertexParent, vertexGroupSize + otherVertexGroupSize);
+            deadParent = otherVertexParent;
+            finalParent = vertexParent;
         }
+        parents.put(deadParent, finalParent);
+        groupSizes.remove(deadParent);
+        groupSizes.put(finalParent, vertexGroupSize + otherVertexGroupSize);
         numGroups--;
-        return find(vertex) == find(otherVertex);
+        return find(vertex) == find(otherVertex); // force compression
     }
 
 
@@ -75,6 +77,8 @@ public class UnionFind {
         uf.union(3, 4);
         System.out.println(uf.getNumGroups());
         uf.union(2, 3);
+        System.out.println(uf.getNumGroups());
+        uf.union(1, 3);
         System.out.println(uf.getNumGroups());
     }
 }
