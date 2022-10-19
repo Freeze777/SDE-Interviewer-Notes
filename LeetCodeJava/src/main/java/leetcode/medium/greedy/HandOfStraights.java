@@ -5,6 +5,7 @@ import java.util.TreeMap;
 
 /**
  * <a href="https://leetcode.com/problems/hand-of-straights/">https://leetcode.com/problems/hand-of-straights</a>
+ * <p>
  * <a href="https://leetcode.com/problems/divide-array-in-sets-of-k-consecutive-numbers/">https://leetcode.com/problems/divide-array-in-sets-of-k-consecutive-numbers/</a>
  */
 public class HandOfStraights {
