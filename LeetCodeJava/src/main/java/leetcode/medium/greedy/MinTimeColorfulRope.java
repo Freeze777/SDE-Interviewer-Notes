@@ -3,12 +3,12 @@ package leetcode.medium.greedy;
 import java.awt.*;
 
 /**
- * ht<a href="tps://leetcode.com/problems/minimum-time-to-make-rope-colorful/
+ * <a href="tps://leetcode.com/problems/minimum-time-to-make-rope-colorful/
  * ">https://leetcode.com/problems/minimum-time-to-make-rope-colorful/</a>
  */
 public class MinTimeColorfulRope {
 
-    public Point burstInterval(int burstStart, String colors) {
+    public Point findSameColorInterval(int burstStart, String colors) {
         int burstEnd = burstStart;
         while (burstEnd < colors.length() - 1 && colors.charAt(burstEnd) == colors.charAt(burstEnd + 1)) {
             burstEnd++;
@@ -16,23 +16,23 @@ public class MinTimeColorfulRope {
         return new Point(burstStart, burstEnd);
     }
 
-    public int burstIntervalCost(Point interval, int[] neededTime) {
-        int burstCostMax = 0, burstCostSum = 0;
+    public int minTimeToRemoveSameColor(Point interval, int[] neededTime) {
+        int burstTimeMax = 0, burstTotalTime = 0;
         for (int i = interval.x; i <= interval.y; i++) {
-            burstCostSum += neededTime[i];
-            burstCostMax = Math.max(burstCostMax, neededTime[i]);
+            burstTotalTime += neededTime[i];
+            burstTimeMax = Math.max(burstTimeMax, neededTime[i]);
         }
-        return burstCostSum - burstCostMax;
+        return burstTotalTime - burstTimeMax; // remove all balloon except the max
     }
 
     public int minCost(String colors, int[] neededTime) {
-        int totalCost = 0;
+        int totalTime = 0;
         for (int start = 0; start < colors.length(); ) {
-            Point interval = burstInterval(start, colors);
-            totalCost += burstIntervalCost(interval, neededTime);
+            Point interval = findSameColorInterval(start, colors);
+            totalTime += minTimeToRemoveSameColor(interval, neededTime);
             start = interval.y + 1;
         }
-        return totalCost;
+        return totalTime;
     }
 
     public static void main(String[] args) {
