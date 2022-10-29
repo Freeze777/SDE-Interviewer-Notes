@@ -1,5 +1,8 @@
 package leetcode.easy.binarysearch;
 
+/**
+ * <a href="https://leetcode.com/problems/first-bad-version/">https://leetcode.com/problems/first-bad-version/</a>
+ */
 public class FirstBadVersion {
     private final int bad;
 
@@ -16,7 +19,7 @@ public class FirstBadVersion {
     }
 
     private int firstBadVersion(int start, int end) {
-        int mid = (start >> 1) + (end >> 1); // avoids overflows
+        int mid = (start + end) >>> 1; // avoids overflows
         boolean isMidBad = isBadVersion(mid);
         if (isMidBad) {
             boolean isPrevBad = isBadVersion(mid - 1);
@@ -35,5 +38,6 @@ public class FirstBadVersion {
         System.out.println(new FirstBadVersion(3).firstBadVersion(7)); //3
         System.out.println(new FirstBadVersion(6).firstBadVersion(7)); //6
         System.out.println(new FirstBadVersion(1702766719).firstBadVersion(2126753390)); //1702766719
+        System.out.println(new FirstBadVersion(Integer.MAX_VALUE / 2).firstBadVersion(Integer.MAX_VALUE)); //1073741823
     }
 }
