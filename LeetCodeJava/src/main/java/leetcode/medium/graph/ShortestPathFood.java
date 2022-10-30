@@ -45,15 +45,18 @@ public class ShortestPathFood {
         Queue<State> bfsQ = new LinkedList<>();
         Set<Point> visited = new HashSet<>();
         bfsQ.add(new State(0, getStart(grid)));
-        int minPath = Integer.MAX_VALUE;
+        int minPath = -1;
         while (!bfsQ.isEmpty()) {
             State current = bfsQ.remove();
-            if (grid[current.position.x][current.position.y] == '#') minPath = Math.min(minPath, current.pathSize);
+            if (grid[current.position.x][current.position.y] == '#') {
+                minPath = current.pathSize;
+                break;
+            }
             if (visited.contains(current.position)) continue;
             bfsQ.addAll(getNextVisits(current, grid, visited));
             visited.add(current.position);
         }
-        return minPath == Integer.MAX_VALUE ? -1 : minPath;
+        return minPath;
     }
 
     public static void main(String[] args) {
