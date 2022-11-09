@@ -4,7 +4,9 @@ package leetcode.medium.recursion;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * <a href="https://leetcode.com/problems/nested-list-weight-sum/description/">https://leetcode.com/problems/nested-list-weight-sum/description/</a>
+ */
 public class NestedListWeightSum {
     private static class NestedInteger {
         Integer value;
