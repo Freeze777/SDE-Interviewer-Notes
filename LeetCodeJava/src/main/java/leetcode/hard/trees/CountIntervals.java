@@ -1,5 +1,8 @@
 package leetcode.hard.trees;
 
+/**
+ * <a href="https://leetcode.com/problems/count-integers-in-intervals/description/">https://leetcode.com/problems/count-integers-in-intervals/description/</a>
+ */
 class CountIntervals {
     private AvlTreeNode _root;
 
