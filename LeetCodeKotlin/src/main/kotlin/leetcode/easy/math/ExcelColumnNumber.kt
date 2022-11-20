@@ -1,4 +1,4 @@
-package leetcode.easy
+package leetcode.easy.math
 
 /**
  * 171. Excel Sheet Column Number
