@@ -19,6 +19,18 @@ class LinkedListCycle {
         }
         return false
     }
+
+    fun hasCycleFast(head: ListNode?): Boolean {
+        if (head?.next == null) return false
+        var slow = head
+        var fast = head
+        while (fast != null) {
+            fast = fast.next?.next
+            slow = slow?.next
+            if (fast == slow) return true
+        }
+        return false
+    }
 }
 
 fun main() {
@@ -29,4 +41,11 @@ fun main() {
     head.next!!.next!!.next = LinkedListCycle.ListNode(-4)
     head.next!!.next!!.next!!.next = head.next
     println(s.hasCycle(head)) // true
+    println(s.hasCycleFast(head)) // true
+
+    val head2 = LinkedListCycle.ListNode(1)
+    head2.next = LinkedListCycle.ListNode(2)
+    head2.next!!.next = head2
+    println(s.hasCycle(head2)) // true
+    println(s.hasCycleFast(head2)) // true
 }
