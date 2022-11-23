@@ -6,7 +6,7 @@ package leetcode.medium
  */
 class ValidSudoku {
 
-    val `3by3MatrixPoints` = listOf(
+    private val `3by3MatrixPoints` = listOf(
         Pair(0, 0),
         Pair(0, 3),
         Pair(0, 6),
@@ -18,7 +18,7 @@ class ValidSudoku {
         Pair(6, 6)
     )
 
-    private fun rowSet(arr: Array<CharArray>, row: Int): Boolean {
+    private fun rowCheck(arr: Array<CharArray>, row: Int): Boolean {
         val set = HashSet<Char>()
         for (i in arr[row].indices) {
             if (arr[row][i] == '.') continue
@@ -28,7 +28,7 @@ class ValidSudoku {
         return true
     }
 
-    private fun colSet(arr: Array<CharArray>, col: Int): Boolean {
+    private fun colCheck(arr: Array<CharArray>, col: Int): Boolean {
         val set = HashSet<Char>()
         for (i in arr.indices) {
             if (arr[i][col] == '.') continue
@@ -38,7 +38,7 @@ class ValidSudoku {
         return true
     }
 
-    private fun `3by3MatrixSet`(arr: Array<CharArray>, row: Int, col: Int): Boolean {
+    private fun `3by3MatrixCheck`(arr: Array<CharArray>, row: Int, col: Int): Boolean {
         val set = HashSet<Char>()
         for (i in 0..2) {
             for (j in 0..2) {
@@ -52,9 +52,9 @@ class ValidSudoku {
 
 
     fun isValidSudoku(board: Array<CharArray>): Boolean {
-        for (i in board.indices) if (!rowSet(board, i)) return false
-        for (i in board[0].indices) if (!colSet(board, i)) return false
-        for (i in `3by3MatrixPoints`) if (!`3by3MatrixSet`(board, i.first, i.second)) return false
+        for (row in board.indices) if (!rowCheck(board, row)) return false
+        for (col in board[0].indices) if (!colCheck(board, col)) return false
+        for (point in `3by3MatrixPoints`) if (!`3by3MatrixCheck`(board, point.first, point.second)) return false
         return true
     }
 }
@@ -73,4 +73,17 @@ fun main() {
         charArrayOf('.', '.', '.', '.', '8', '.', '.', '7', '9')
     )
     println(s.isValidSudoku(board))// true
+
+    val board2 = arrayOf(
+        charArrayOf('8', '3', '.', '.', '7', '.', '.', '.', '.'),
+        charArrayOf('6', '.', '.', '1', '9', '5', '.', '.', '.'),
+        charArrayOf('.', '9', '8', '.', '.', '.', '.', '6', '.'),
+        charArrayOf('8', '.', '.', '.', '6', '.', '.', '.', '3'),
+        charArrayOf('4', '.', '.', '8', '.', '3', '.', '.', '1'),
+        charArrayOf('7', '.', '.', '.', '2', '.', '.', '.', '6'),
+        charArrayOf('.', '6', '.', '.', '.', '.', '2', '8', '.'),
+        charArrayOf('.', '.', '.', '4', '1', '9', '.', '.', '5'),
+        charArrayOf('.', '.', '.', '.', '8', '.', '.', '7', '9')
+    )
+    println(s.isValidSudoku(board2))// false
 }
