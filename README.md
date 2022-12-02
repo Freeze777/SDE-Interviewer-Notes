@@ -9,7 +9,8 @@ Useful materials needed for SDE interviewers
 - Amazon SDE-III Interview : https://medium.com/interviewnoodle/amazon-sde-iii-interview-experience-4c753b581c3
 - Foodpanda Staff/Principal Engineer Interview : https://freezefrancis.medium.com/foodpanda-staff-principal-engineer-interview-d8529ca9be2c
 - Tiktok Interview : https://freezefrancis.medium.com/tiktok-singapore-backend-engineer-interview-eef5d3cbcf99
-- Google Interview : https://medium.com/interviewnoodle/google-phone-interview-experience-a75c2d0e0080
+- Google Phone Screen Interview : https://medium.com/interviewnoodle/google-phone-interview-experience-a75c2d0e0080
+- Google Onsite Interview : https://medium.com/p/3b035eb9e9f1
 
 
 
