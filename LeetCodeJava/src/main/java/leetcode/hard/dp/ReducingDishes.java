@@ -8,7 +8,7 @@ import java.util.Arrays;
 public class ReducingDishes {
     private int maxSatisfaction(int[] satisfactions, int current, int time, int[][] cache) {
         if (current >= satisfactions.length || time > satisfactions.length) return 0;
-        if (cache[current][time] != -1) return cache[current][time];
+        if (cache[current][time] != 0) return cache[current][time];
         int withCurrent = time * satisfactions[current] + maxSatisfaction(satisfactions, current + 1, time + 1, cache);
         int withoutCurrent = maxSatisfaction(satisfactions, current + 1, time, cache);
         return (cache[current][time] = Math.max(withCurrent, withoutCurrent));
@@ -17,7 +17,6 @@ public class ReducingDishes {
     public int maxSatisfaction(int[] satisfactions) {
         Arrays.sort(satisfactions);
         int[][] cache = new int[satisfactions.length][satisfactions.length + 1];
-        for (int[] dp : cache) Arrays.fill(dp, -1);
         return maxSatisfaction(satisfactions, 0, 1, cache);
     }
 
