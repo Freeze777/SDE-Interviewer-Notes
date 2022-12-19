@@ -29,5 +29,4 @@ fun validPath(n: Int, edges: Array<IntArray>, source: Int, destination: Int): Bo
 
 fun main() {
     println(validPath(3, arrayOf(intArrayOf(0, 1), intArrayOf(1, 2), intArrayOf(2, 0)), 0, 2))
-
 }
