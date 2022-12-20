@@ -3,8 +3,8 @@ package leetcode.easy.graph
 import java.util.LinkedList
 
 /**
- * 1091. Shortest Path in Binary Matrix
- * https://leetcode.com/problems/shortest-path-in-binary-matrix/
+ * 1971. Find if Path Exists in Graph
+ * https://leetcode.com/problems/find-if-path-exists-in-graph/
  */
 fun validPath(n: Int, edges: Array<IntArray>, source: Int, destination: Int): Boolean {
     val graph = HashMap<Int, MutableList<Int>>()
