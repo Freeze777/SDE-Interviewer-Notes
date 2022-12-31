@@ -3,6 +3,7 @@ package leetcode.hard.backtracking;
 import java.awt.*;
 
 /**
+ * 980. Unique Paths III
  * <a href="https://leetcode.com/problems/unique-paths-iii/">https://leetcode.com/problems/unique-paths-iii/</a>
  */
 public class UniquePathsIII {
@@ -41,9 +42,9 @@ public class UniquePathsIII {
     }
 
     public static void main(String[] args) {
-        UniquePathsIII upii = new UniquePathsIII();
-        System.out.println(upii.uniquePathsIII(new int[][]{{1, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 2, -1}}));
-        System.out.println(upii.uniquePathsIII(new int[][]{{1, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 2}}));
-        System.out.println(upii.uniquePathsIII(new int[][]{{0, 1}, {2, 0}}));
+        UniquePathsIII upiii = new UniquePathsIII();
+        System.out.println(upiii.uniquePathsIII(new int[][]{{1, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 2, -1}}));//2
+        System.out.println(upiii.uniquePathsIII(new int[][]{{1, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 2}}));//4
+        System.out.println(upiii.uniquePathsIII(new int[][]{{0, 1}, {2, 0}}));//0
     }
 }
