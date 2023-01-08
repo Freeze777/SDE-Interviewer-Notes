@@ -31,12 +31,13 @@ class MaxPointsLine {
         if (y == 0) return x
         return gcd(y, x % y)
     }
-
 }
 
 fun main() {
     val mpl = MaxPointsLine()
     println(mpl.maxPoints(arrayOf(intArrayOf(1, 1), intArrayOf(2, 2), intArrayOf(3, 3))))//3
+    println(mpl.maxPoints(arrayOf(intArrayOf(1, 1))))//1
+    println(mpl.maxPoints(arrayOf(intArrayOf(1, 1), intArrayOf(1000, 2000))))//2
     println(
         mpl.maxPoints(
             arrayOf(
@@ -49,7 +50,6 @@ fun main() {
             )
         )
     )//4
-
     println(
         mpl.maxPoints(
             arrayOf(
@@ -62,21 +62,4 @@ fun main() {
             )
         )
     )//4
-
-    println(
-        mpl.maxPoints(
-            arrayOf(
-                intArrayOf(1, 1),
-            )
-        )
-    )//1
-
-    println(
-        mpl.maxPoints(
-            arrayOf(
-                intArrayOf(1, 1),
-                intArrayOf(1000, 2000),
-            )
-        )
-    )//2
 }
