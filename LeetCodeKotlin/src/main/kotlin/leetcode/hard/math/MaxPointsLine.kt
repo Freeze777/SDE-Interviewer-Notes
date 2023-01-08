@@ -6,23 +6,23 @@ package leetcode.hard.math
  */
 class MaxPointsLine {
     fun maxPoints(points: Array<IntArray>): Int {
-        val map = mutableMapOf<Triple<Int, Int, Int>, MutableSet<Pair<Int, Int>>>()
+        val lines = mutableMapOf<Triple<Int, Int, Int>, MutableSet<Pair<Int, Int>>>()
         for (i in points.indices) {
             for (j in i + 1 until points.size) {
                 val coefficient = lineCoefficient(points[i], points[j])
-                map[coefficient] = map.getOrDefault(coefficient, mutableSetOf()).apply {
+                lines[coefficient] = lines.getOrDefault(coefficient, mutableSetOf()).apply {
                     add(points[i][0] to points[i][1])
                     add(points[j][0] to points[j][1])
                 }
             }
         }
-        return if (map.isNotEmpty()) map.maxBy { it.value.size }.value.size else 1
+        return if (lines.isNotEmpty()) lines.maxBy { it.value.size }.value.size else 1
     }
 
-    private fun lineCoefficient(firstPoint: IntArray, secondPoint: IntArray): Triple<Int, Int, Int> {
-        val a = firstPoint[1] - secondPoint[1]
-        val b = secondPoint[0] - firstPoint[0]
-        val c = firstPoint[0] * secondPoint[1] - secondPoint[0] * firstPoint[1]
+    private fun lineCoefficient(point: IntArray, otherPoint: IntArray): Triple<Int, Int, Int> {
+        val a = point[1] - otherPoint[1]
+        val b = otherPoint[0] - point[0]
+        val c = point[0] * otherPoint[1] - otherPoint[0] * point[1]
         val gcd = gcd(a, gcd(b, c))
         return Triple(a / gcd, b / gcd, c / gcd)
     }
