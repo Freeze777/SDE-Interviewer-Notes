@@ -8,24 +8,25 @@ import java.util.*
  * https://leetcode.com/problems/longest-path-with-different-adjacent-characters/
  */
 class LongestPathDifferentAdjacentCharacters {
-    data class SubtreePathStat(val maxStartFromRoot: Int, val maxSoFar: Int)
+    private data class SubtreePathStat(val maxStartFromRoot: Int, val maxSoFar: Int) {
+        fun max(): Int = max(maxStartFromRoot, maxSoFar)
+    }
 
     fun longestPath(parent: IntArray, color: String): Int {
         val graph = HashMap<Int, MutableList<Int>>()
         for (node in parent.indices) graph[node] = mutableListOf()
         for (node in parent.indices) graph[parent[node]]?.add(node)
-        val rootStat = postOrderWalk(graph, 0, color)
-        return max(rootStat.maxStartFromRoot, rootStat.maxSoFar)
+        return postOrderWalk(graph, 0, color).max()
     }
 
     private fun postOrderWalk(graph: HashMap<Int, MutableList<Int>>, root: Int, color: String): SubtreePathStat {
         var maxSoFar = 1
         var maxStartFromRoot = 1
-        val top2CompatiblePath = PriorityQueue<Int>(2) // min heap
+        val top2CompatiblePath = PriorityQueue<Int>(2) //min heap
         for (child in graph[root]!!) {
             val childSubtreeStat = postOrderWalk(graph, child, color)
             maxSoFar = max(maxSoFar, childSubtreeStat.maxSoFar)
-            if (color[child] != color[root]) {//compatible with root
+            if (color[child] != color[root]) { //compatible with root
                 maxStartFromRoot = max(maxStartFromRoot, childSubtreeStat.maxStartFromRoot + 1)
                 if (top2CompatiblePath.size < 2) top2CompatiblePath.add(childSubtreeStat.maxStartFromRoot)
                 else if (top2CompatiblePath.peek() < childSubtreeStat.maxStartFromRoot) {
@@ -34,9 +35,9 @@ class LongestPathDifferentAdjacentCharacters {
                 }
             }
         }
-        if (top2CompatiblePath.size == 2) {
+        if (top2CompatiblePath.size == 2)
             maxSoFar = max(maxSoFar, top2CompatiblePath.poll() + top2CompatiblePath.poll() + 1)
-        }
+
         return SubtreePathStat(maxStartFromRoot, max(maxSoFar, maxStartFromRoot))
     }
 }
