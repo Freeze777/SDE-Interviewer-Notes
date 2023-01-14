@@ -8,7 +8,7 @@ public class UnionFind {
     private int numGroups;
     private int size;
 
-    UnionFind(int numVertices) {
+    public UnionFind(int numVertices) {
         initialize(numVertices);
     }
 
