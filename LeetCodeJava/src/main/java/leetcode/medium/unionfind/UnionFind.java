@@ -3,13 +3,17 @@ package leetcode.medium.unionfind;
 import java.util.*;
 
 public class UnionFind {
-    private final Map<Integer, Integer> parents = new HashMap<>();
-    private final Map<Integer, Integer> groupSizes = new HashMap<>();
-    private int numGroups;
-    private int size;
+    private final Map<Integer, Integer> parents, groupSizes;
+    private int numGroups, size;
 
     public UnionFind(int numVertices) {
-        initialize(numVertices);
+        parents = new HashMap<>();
+        groupSizes = new HashMap<>();
+        for (int i = 0; i < numVertices; i++) {
+            parents.put(i, i);
+            groupSizes.put(i, 1);
+        }
+        size = numGroups = numVertices;
     }
 
     @Override
@@ -26,22 +30,18 @@ public class UnionFind {
         return groupSizes.get(find(vertex));
     }
 
-    private void initialize(int numVertices) {
-        for (int i = 0; i < numVertices; i++) {
-            parents.put(i, i);
-            groupSizes.put(i, 1);
-        }
-        size = numGroups = numVertices;
+    public Collection<Set<Integer>> getGroups(boolean sorted) {
+        return getGroupsByParent(sorted).values();
     }
 
-    public Collection<Set<Integer>> getGroups() {
+    public HashMap<Integer, Set<Integer>> getGroupsByParent(boolean sorted) {
         HashMap<Integer, Set<Integer>> groups = new HashMap<>();
         for (int i = 0; i < size; i++) {
             int parent = find(i);
-            if (!groups.containsKey(parent)) groups.put(parent, new HashSet<>());
+            if (!groups.containsKey(parent)) groups.put(parent, sorted ? new TreeSet<>() : new HashSet<>());
             groups.get(parent).add(i);
         }
-        return groups.values();
+        return groups;
     }
 
     public int find(int vertex) {
@@ -71,20 +71,20 @@ public class UnionFind {
         return find(vertex) == find(otherVertex); // force compression
     }
 
-
     public static void main(String[] args) {
         UnionFind uf = new UnionFind(5);
-        System.out.println(uf.getNumGroups());
+        System.out.println(uf.getNumGroups());//5
         uf.union(0, 1);
-        System.out.println(uf.getNumGroups());
+        System.out.println(uf.getNumGroups());//4
         uf.union(0, 2);
-        System.out.println(uf.getNumGroups());
+        System.out.println(uf.getNumGroups());//3
         uf.union(3, 4);
-        System.out.println(uf.getNumGroups());
+        System.out.println(uf.getNumGroups());//2
         uf.union(2, 3);
-        System.out.println(uf.getNumGroups());
-        uf.union(1, 3);
-        System.out.println(uf.getNumGroups());
-        System.out.println(uf.getGroupSizes(0));
+        System.out.println(uf.getNumGroups());//1
+        System.out.println(uf.union(1, 3));//true
+        System.out.println(uf.getNumGroups());//1
+        System.out.println(uf.getGroupSizes(0));//5
+        System.out.println(uf.getGroupsByParent(true));//{0=[0, 1, 2, 3, 4]}
     }
 }

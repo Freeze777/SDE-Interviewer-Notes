@@ -30,15 +30,15 @@ public class MostStonesRemoved {
         }
         removeStonesByUnion(uf, rowStones);
         removeStonesByUnion(uf, colStones);
-        return uf.getGroups().stream().mapToInt(Set::size).sum() - uf.getNumGroups();
+        return uf.getGroups(false).stream().mapToInt(Set::size).sum() - uf.getNumGroups();
     }
 
     public static void main(String[] args) {
         MostStonesRemoved msr = new MostStonesRemoved();
-        System.out.println(msr.removeStones(new int[][]{{0, 0}, {0, 1}, {1, 0}, {1, 2}, {2, 1}, {2, 2}}));
-        System.out.println(msr.removeStones(new int[][]{{0, 0}, {0, 2}, {1, 1}, {2, 0}, {2, 2}}));
-        System.out.println(msr.removeStones(new int[][]{{0, 0}}));
-        System.out.println(msr.removeStones(new int[][]{{0, 0}, {0, 1}, {1, 0}, {1, 1}}));
+        System.out.println(msr.removeStones(new int[][]{{0, 0}, {0, 1}, {1, 0}, {1, 2}, {2, 1}, {2, 2}}));//5
+        System.out.println(msr.removeStones(new int[][]{{0, 0}, {0, 2}, {1, 1}, {2, 0}, {2, 2}}));//3
+        System.out.println(msr.removeStones(new int[][]{{0, 0}}));//0
+        System.out.println(msr.removeStones(new int[][]{{0, 0}, {0, 1}, {1, 0}, {1, 1}}));//3
     }
 
 }
