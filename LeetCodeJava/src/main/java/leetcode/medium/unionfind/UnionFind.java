@@ -14,12 +14,8 @@ public class UnionFind {
 
     @Override
     public String toString() {
-        return "UnionFind{" +
-                "parents=" + parents +
-                ", groupSizes=" + groupSizes +
-                ", numGroups=" + numGroups +
-                ", size=" + size +
-                '}';
+        return "UnionFind{" + "parents=" + parents + ", groupSizes=" + groupSizes +
+                ", numGroups=" + numGroups + ", size=" + size + '}';
     }
 
     public int getNumGroups() {
@@ -44,7 +40,6 @@ public class UnionFind {
             int parent = find(i);
             if (!groups.containsKey(parent)) groups.put(parent, new HashSet<>());
             groups.get(parent).add(i);
-
         }
         return groups.values();
     }
@@ -90,5 +85,6 @@ public class UnionFind {
         System.out.println(uf.getNumGroups());
         uf.union(1, 3);
         System.out.println(uf.getNumGroups());
+        System.out.println(uf.getGroupSizes(0));
     }
 }
