@@ -16,12 +16,6 @@ public class UnionFind {
         size = numGroups = numVertices;
     }
 
-    @Override
-    public String toString() {
-        return "UnionFind{" + "parents=" + parents + ", groupSizes=" + groupSizes +
-                ", numGroups=" + numGroups + ", size=" + size + '}';
-    }
-
     public int getNumGroups() {
         return numGroups;
     }
