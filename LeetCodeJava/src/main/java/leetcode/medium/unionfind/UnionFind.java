@@ -28,8 +28,8 @@ public class UnionFind {
         return getGroupsByParent(sorted).values();
     }
 
-    public HashMap<Integer, Set<Integer>> getGroupsByParent(boolean sorted) {
-        HashMap<Integer, Set<Integer>> groups = new HashMap<>();
+    public Map<Integer, Set<Integer>> getGroupsByParent(boolean sorted) {
+        Map<Integer, Set<Integer>> groups = new HashMap<>();
         for (int i = 0; i < size; i++) {
             int parent = find(i);
             if (!groups.containsKey(parent)) groups.put(parent, sorted ? new TreeSet<>() : new HashSet<>());
