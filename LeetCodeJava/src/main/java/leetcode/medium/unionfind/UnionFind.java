@@ -20,15 +20,15 @@ public class UnionFind {
         return numGroups;
     }
 
-    public int getGroupSizes(int vertex) {
+    public int getGroupSize(int vertex) {
         return groupSizes.get(find(vertex));
     }
 
     public Collection<Set<Integer>> getGroups(boolean sorted) {
-        return getGroupsByParent(sorted).values();
+        return groupByParent(sorted).values();
     }
 
-    public Map<Integer, Set<Integer>> getGroupsByParent(boolean sorted) {
+    public Map<Integer, Set<Integer>> groupByParent(boolean sorted) {
         Map<Integer, Set<Integer>> groups = new HashMap<>();
         for (int i = 0; i < size; i++) {
             int parent = find(i);
@@ -78,7 +78,7 @@ public class UnionFind {
         System.out.println(uf.getNumGroups());//1
         System.out.println(uf.union(1, 3));//true
         System.out.println(uf.getNumGroups());//1
-        System.out.println(uf.getGroupSizes(0));//5
-        System.out.println(uf.getGroupsByParent(true));//{0=[0, 1, 2, 3, 4]}
+        System.out.println(uf.getGroupSize(0));//5
+        System.out.println(uf.groupByParent(true));//{0=[0, 1, 2, 3, 4]}
     }
 }

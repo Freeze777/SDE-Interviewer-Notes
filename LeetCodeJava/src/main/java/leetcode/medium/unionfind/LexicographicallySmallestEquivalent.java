@@ -10,7 +10,7 @@ public class LexicographicallySmallestEquivalent {
         var uf = new UnionFind(26);
         var ans = new StringBuilder();
         for (int i = 0; i < a.length(); i++) uf.union(a.charAt(i) - 'a', b.charAt(i) - 'a');
-        var groupByParent = uf.getGroupsByParent(true);
+        var groupByParent = uf.groupByParent(true);
         for (int i = 0; i < c.length(); i++) {
             var parent = uf.find(c.charAt(i) - 'a');
             var group = (TreeSet<Integer>) groupByParent.get(parent);
