@@ -25,15 +25,19 @@ public class MergeIntervals {
         }
     }
 
+    public int[][] merge(int[][] intervals) {
+        if (intervals.length < 2) return intervals;
+        return getFinalResult(mergeIntervals(getIntervals(intervals)));
+    }
 
-    public int[][] merge(int[][] _intervals) {
-        if (_intervals.length < 2) return _intervals;
-
-        List<Interval> intervals = Arrays.stream(_intervals)
+    protected List<Interval> getIntervals(int[][] _intervals) {
+        return Arrays.stream(_intervals)
                 .map(interval -> new Interval(interval[0], interval[1]))
-                .sorted()
                 .collect(Collectors.toList());
+    }
 
+    protected List<Interval> mergeIntervals(List<Interval> intervals) {
+        Collections.sort(intervals);
         Interval previous = intervals.get(0);
         intervals.add(new Interval(Integer.MAX_VALUE, Integer.MAX_VALUE)); // sentinel value
         List<Interval> mergedIntervals = new ArrayList<>();
@@ -47,6 +51,10 @@ public class MergeIntervals {
                 previous.y = Math.max(previous.y, current.y);
             }
         }
+        return mergedIntervals;
+    }
+
+    protected int[][] getFinalResult(List<Interval> mergedIntervals) {
         int[][] _mergedIntervals = new int[mergedIntervals.size()][2];
         for (int i = 0; i < mergedIntervals.size(); i++) {
             _mergedIntervals[i][0] = mergedIntervals.get(i).x;
@@ -57,11 +65,17 @@ public class MergeIntervals {
 
     public static void main(String[] args) {
         MergeIntervals mi = new MergeIntervals();
-        mi.merge(new int[][]{{15, 18}, {1, 3}, {8, 10}, {2, 6}});
-        mi.merge(new int[][]{{9, 18}, {1, 3}, {8, 10}, {2, 6}});
-        mi.merge(new int[][]{{9, 18}, {1, 3}, {8, 10}, {2, 8}});
-        mi.merge(new int[][]{{9, 18}});
-        mi.merge(new int[][]{{9, 18}, {20, 100}});
-        mi.merge(new int[][]{{9, 18}, {18, 100}});
+        //[[1, 6], [8, 10], [15, 18]]
+        System.out.println(Arrays.deepToString(mi.merge(new int[][]{{15, 18}, {1, 3}, {8, 10}, {2, 6}})));
+        //[[1, 6], [8, 18]]
+        System.out.println(Arrays.deepToString(mi.merge(new int[][]{{9, 18}, {1, 3}, {8, 10}, {2, 6}})));
+        //[[1, 18]]
+        System.out.println(Arrays.deepToString(mi.merge(new int[][]{{9, 18}, {1, 3}, {8, 10}, {2, 8}})));
+        //[[9, 18]]
+        System.out.println(Arrays.deepToString(mi.merge(new int[][]{{9, 18}})));
+        //[[9, 18], [20, 100]]
+        System.out.println(Arrays.deepToString(mi.merge(new int[][]{{9, 18}, {20, 100}})));
+        //[[9, 100]]
+        System.out.println(Arrays.deepToString(mi.merge(new int[][]{{9, 18}, {18, 100}})));
     }
 }
