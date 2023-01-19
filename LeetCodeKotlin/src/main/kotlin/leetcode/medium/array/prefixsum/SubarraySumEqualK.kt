@@ -1,4 +1,4 @@
-package leetcode.easy.array.prefixsum
+package leetcode.medium.array.prefixsum
 
 /**
  * 560. Subarray Sum Equals K
