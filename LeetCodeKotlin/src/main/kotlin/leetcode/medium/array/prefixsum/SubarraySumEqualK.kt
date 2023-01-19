@@ -10,11 +10,10 @@ class SubarraySumEqualK {
         var total = 0
         for (index in nums.indices) {
             if (prefixSum[index] == k) total++
-            val target = prefixSum[index] - k
+            val target = prefixSum[index] - k // prefix[j] - prefix[i] = k
             if (lookup.containsKey(target)) {
-                val indices = lookup[target]!!
-                val nearestIndex = indices.binarySearch(index).let { if (it < 0) -it - 1 else it }
-                total += nearestIndex
+                val totalPreviousIndices = lookup[target]!!.binarySearch(index).let { if (it < 0) -it - 1 else it }
+                total += totalPreviousIndices
             }
         }
         return total
