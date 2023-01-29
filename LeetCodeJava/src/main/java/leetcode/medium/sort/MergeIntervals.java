@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
  * <a href="https://leetcode.com/problems/merge-intervals/">https://leetcode.com/problems/merge-intervals/</a>
  */
 public class MergeIntervals {
-    static class Interval extends Point implements Comparable<Interval> {
+    protected static class Interval extends Point implements Comparable<Interval> {
         Interval(int x, int y) {
             super(x, y);
         }
