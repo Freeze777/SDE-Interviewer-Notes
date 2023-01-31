@@ -2,6 +2,10 @@ package leetcode.medium.dp
 
 import leetcode.utils.randomIntArray
 
+/**
+ * 1626. Best Team With No Conflicts
+ * https://leetcode.com/problems/best-team-with-no-conflicts/
+ */
 class BestTeamWithNoConflict {
     private data class Player(val score: Int, val age: Int)
 
