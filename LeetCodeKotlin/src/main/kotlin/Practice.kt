@@ -1,10 +1,10 @@
 class Practice {
-    fun solve() {
-        println("Hello World!")
+    fun solve(): String {
+        return "Hello World!"
     }
 }
 
 fun main() {
     val p = Practice()
-    p.solve()
+    println(p.solve())
 }
