@@ -36,7 +36,7 @@ class MinFuelCostReportCapital {
             totalPeople += fuelStats.numPeople
         }
         if (current == 0) return FuelStats(totalFuelConsumed, totalPeople)
-        val numCars = if (totalPeople % seats != 0) ceil(totalPeople / (seats * 1.0)).toInt() else (totalPeople / seats)
+        val numCars = ceil(totalPeople / (seats * 1.0)).toInt()
         return FuelStats(totalFuelConsumed + numCars, totalPeople)
     }
 }
