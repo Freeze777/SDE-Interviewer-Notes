@@ -18,11 +18,9 @@ https://leetcode.com/problems/valid-anagram
 
 Challenge with more questions based on how interviewee performs: 
 - Time complexity and space complexity. Best is O(N) time and O(1) space.
-- large inputs from disk how to solve - 4 GB RAM, two 16 GB files on disk (one for each string)
-- large inputs in file to API service -> how to scale
-- Increase difficulty : https://leetcode.com/problems/minimum-number-of-steps-to-make-two-strings-anagram/
-- Large stream of strings, print anagram pairs (scalable solution) ??
-- Write unit tests
+- large input files from disk how to solve with limited RAM - 4 GB RAM, two 16 GB files on disk (one for each string)
+- Build a system that takes in 2 files and computes if they are anagrams or not. 100k Requests per days and 50 GB max size per file.
+
 
 different way of asking : https://webeduclick.com/python-program-print-histogram-frequencies-characters-in-string/
 """
