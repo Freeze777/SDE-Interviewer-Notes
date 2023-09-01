@@ -1,5 +1,7 @@
 package leetcode.concurrency;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Semaphore;
 
 /**
@@ -37,25 +39,26 @@ public class H2O {
     }
 
     private static void waterGenerator(H2O h2O, Runnable releaseHydrogen, Runnable releaseOxygen, String input) throws InterruptedException {
-        final char[] chars = input.toCharArray();
-        for (char c : chars) {
+        List<Thread> threads = new ArrayList<>();
+        for (char c : input.toCharArray()) {
             switch (c) {
-                case 'H' -> new Thread(() -> {
+                case 'H' -> threads.add(new Thread(() -> {
                     try {
                         h2O.hydrogen(releaseHydrogen);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                }).start();
-                case 'O' -> new Thread(() -> {
+                }));
+                case 'O' -> threads.add(new Thread(() -> {
                     try {
                         h2O.oxygen(releaseOxygen);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                }).start();
+                }));
             }
         }
-        Thread.sleep(100);
+        threads.forEach(Thread::start);
+        for (Thread thread : threads) thread.join();
     }
 }
