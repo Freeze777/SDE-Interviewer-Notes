@@ -17,11 +17,11 @@ public class ZeroEvenOdd {
     }
 
     public void zero(IntConsumer printNumber) throws InterruptedException {
-        for (int i = 0; i < n; i++) {
+        for (int i = 1; i <= n; i++) {
             zero.acquire();
             printNumber.accept(0);
-            if (i % 2 == 1) even.release();
-            else odd.release();
+            if (i % 2 == 1) odd.release();
+            else even.release();
         }
     }
 
