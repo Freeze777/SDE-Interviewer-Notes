@@ -43,39 +43,39 @@ public class ZeroEvenOdd {
 
     public static void main(String[] args) throws InterruptedException {
         execute(new ZeroEvenOdd(5));
-        System.out.println();
         execute(new ZeroEvenOdd(10));
     }
 
     private static void execute(ZeroEvenOdd zeroEvenOdd) throws InterruptedException {
-        new Thread(() -> {
+        Thread zero = new Thread(() -> {
             try {
                 zeroEvenOdd.zero(new IntConsumer());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }).start();
-        new Thread(() -> {
+        });
+        Thread even = new Thread(() -> {
             try {
                 zeroEvenOdd.even(new IntConsumer());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }).start();
-        new Thread(() -> {
+        });
+        Thread odd = new Thread(() -> {
             try {
                 zeroEvenOdd.odd(new IntConsumer());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }).start();
-        Thread.sleep(100);
-    }
-}
+        });
+        zero.start();
+        even.start();
+        odd.start();
 
-class IntConsumer {
-    public void accept(int x) {
-        System.out.println(x);
+        zero.join();
+        even.join();
+        odd.join();
+        System.out.println();
     }
 }
 
