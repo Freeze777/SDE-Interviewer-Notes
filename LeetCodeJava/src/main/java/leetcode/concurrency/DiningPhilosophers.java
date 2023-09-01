@@ -47,7 +47,7 @@ public class DiningPhilosophers {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         final DiningPhilosophers diningPhilosophers = new DiningPhilosophers();
         final Runnable pickLeftFork = () -> System.out.println(Thread.currentThread().getName() + ": pickLeftFork");
         final Runnable pickRightFork = () -> System.out.println(Thread.currentThread().getName() + ": pickRightFork");
@@ -56,23 +56,30 @@ public class DiningPhilosophers {
         final Runnable putLeftFork = () -> System.out.println(Thread.currentThread().getName() + ": putLeftFork");
         final Runnable putRightFork = () -> System.out.println(Thread.currentThread().getName() + ": putRightFork");
 
-        final int numPhilosophers = 5;
-        final int numTimesEat = 15;
+        execute(diningPhilosophers, pickLeftFork, pickRightFork, think, eat, putLeftFork, putRightFork, 5, 5);
+        execute(diningPhilosophers, pickLeftFork, pickRightFork, think, eat, putLeftFork, putRightFork, 5, 10);
+    }
+
+    private static void execute(DiningPhilosophers diningPhilosophers, Runnable pickLeftFork, Runnable pickRightFork, Runnable think, Runnable eat, Runnable putLeftFork, Runnable putRightFork, int numPhilosophers, int numTimesEat) throws InterruptedException {
+        List<Thread> threads = new ArrayList<>();
         for (int philosopher = 0; philosopher < numPhilosophers; philosopher++) {
             final int finalPhilosopher = philosopher;
             Thread t = new Thread(() -> {
-                for (int eatIdx = 0; eatIdx < numTimesEat; eatIdx++) {
+                for (int e = 0; e < numTimesEat; e++) {
                     try {
                         think.run();
                         diningPhilosophers.wantsToEat(finalPhilosopher, pickLeftFork, pickRightFork, eat, putLeftFork, putRightFork);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
                     }
                 }
             });
-            t.setName("Philosopher-" + philosopher);
-            t.start();
+            t.setName("Philosopher" + philosopher);
+            threads.add(t);
         }
+        threads.forEach(Thread::start);
+        for (Thread thread : threads) thread.join();
+        System.out.println("\n############\n");
     }
 }
 
