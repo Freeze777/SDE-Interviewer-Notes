@@ -1,4 +1,4 @@
-package leetcode.medium.design;
+package leetcode.design;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * <a href="https://leetcode.com/problems/insert-delete-getrandom-o1/description/">https://leetcode.com/problems/insert-delete-getrandom-o1/description/</a>
+ * <a href="https://leetcode.com/problems/insert-delete-getrandom-o1/description/"> 380. Insert Delete GetRandom O(1) </a>
  */
 public class RandomizedSet {
     private final Map<Integer, Integer> lookup = new HashMap<>();
