@@ -2,6 +2,7 @@ package leetcode.concurrency;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.Semaphore;
 
 /**
@@ -9,7 +10,8 @@ import java.util.concurrent.Semaphore;
  */
 public class H2O {
 
-    private final Semaphore oxygen = new Semaphore(0);
+    private final CyclicBarrier cyclicBarrier = new CyclicBarrier(3);
+    private final Semaphore oxygen = new Semaphore(1);
     private final Semaphore hydrogen = new Semaphore(2);
 
     public H2O() {
@@ -17,14 +19,25 @@ public class H2O {
 
     public void hydrogen(Runnable releaseHydrogen) throws InterruptedException {
         hydrogen.acquire();
+        awaitBarrier();
         releaseHydrogen.run();
-        if (hydrogen.availablePermits() == 0) oxygen.release(1);
+        hydrogen.release();
     }
 
     public void oxygen(Runnable releaseOxygen) throws InterruptedException {
         oxygen.acquire();
+        awaitBarrier();
         releaseOxygen.run();
-        hydrogen.release(2);
+        oxygen.release();
+
+    }
+
+    private void awaitBarrier() {
+        try {
+            cyclicBarrier.await();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) throws InterruptedException {
@@ -45,14 +58,14 @@ public class H2O {
                 case 'H' -> threads.add(new Thread(() -> {
                     try {
                         h2O.hydrogen(releaseHydrogen);
-                    } catch (InterruptedException e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }));
                 case 'O' -> threads.add(new Thread(() -> {
                     try {
                         h2O.oxygen(releaseOxygen);
-                    } catch (InterruptedException e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }));
