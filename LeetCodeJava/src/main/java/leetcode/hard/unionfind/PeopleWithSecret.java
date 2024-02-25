@@ -4,6 +4,9 @@ import leetcode.medium.unionfind.UnionFind;
 
 import java.util.*;
 
+/**
+ * <a href="https://leetcode.com/problems/find-all-people-with-secret/">2092. Find All People With Secret</a>
+ */
 public class PeopleWithSecret {
     private record Meeting(int attendee, int otherAttendee) {
     }
