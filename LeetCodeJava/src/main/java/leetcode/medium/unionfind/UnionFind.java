@@ -1,19 +1,27 @@
 package leetcode.medium.unionfind;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class UnionFind {
     private final Map<Integer, Integer> parents, groupSizes;
-    private int numGroups, size;
+    private int numGroups;
+    private final List<Integer> vertices;
 
     public UnionFind(int numVertices) {
+        this(IntStream.range(0, numVertices).boxed().collect(Collectors.toList()));
+    }
+
+    public UnionFind(List<Integer> vertices) {
         parents = new HashMap<>();
         groupSizes = new HashMap<>();
-        for (int i = 0; i < numVertices; i++) {
-            parents.put(i, i);
-            groupSizes.put(i, 1);
+        for (var vertex : vertices) {
+            parents.put(vertex, vertex);
+            groupSizes.put(vertex, 1);
         }
-        size = numGroups = numVertices;
+        numGroups = vertices.size();
+        this.vertices = vertices;
     }
 
     public int getNumGroups() {
@@ -30,10 +38,10 @@ public class UnionFind {
 
     public Map<Integer, Set<Integer>> groupByParent(boolean sorted) {
         Map<Integer, Set<Integer>> groups = new HashMap<>();
-        for (int i = 0; i < size; i++) {
-            int parent = find(i);
+        for (int vertex : vertices) {
+            int parent = find(vertex);
             if (!groups.containsKey(parent)) groups.put(parent, sorted ? new TreeSet<>() : new HashSet<>());
-            groups.get(parent).add(i);
+            groups.get(parent).add(vertex);
         }
         return groups;
     }
