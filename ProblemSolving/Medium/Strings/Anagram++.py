@@ -10,17 +10,17 @@ Output: 1
 
 --------------------
 
+Input: s = "abab", t = "aaaa"
+Output: 2
+
+Input: s = "xxyyzz", t = "xyzyxz"
+Output: 0
+
 Input: s = "leetcode", t = "practice"
 Output: 5
 
 Input: s = "friend", t = "family"
 Output: 4
-
-Input: s = "abab", t = "aaaa"
-Output: 2
-
-Input: s = "xxyyzz", t = "xxyyzz"
-Output: 0
 
 """
 """
@@ -59,6 +59,8 @@ Given two strings s and p, return an array of all the start indices of p's anagr
 
 Input: s = "cbaebabacd", p = "abc"
 Output: [0,6]
+
+--------------------
 
 Input: s = "abab", p = "ab"
 Output: [0,1,2]
