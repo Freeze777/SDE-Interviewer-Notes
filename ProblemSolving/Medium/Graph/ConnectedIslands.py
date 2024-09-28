@@ -1,6 +1,6 @@
 """
 
-Given an MxN matrix, find the following:
+Given an MxN matrix with 1's and 0's, find the following:
 1) Number of connected islands
 2) Size of the largest island
 
