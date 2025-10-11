@@ -72,6 +72,7 @@ class DesignServiceImpl implements DesignService {
         throw new IllegalArgumentException("null designContent");
     }
 
+
     @Override
     public String getDesign(AuthContext ctx, String designId) {
         if (ctx.userId == null) {

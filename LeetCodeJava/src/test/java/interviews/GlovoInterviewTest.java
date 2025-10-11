@@ -11,28 +11,21 @@ public class GlovoInterviewTest {
 
     // Problem 1
     public List<Integer> missingProducts(List<Integer> requested, List<Integer> delivered) {
-        Map<Integer, Integer> map = new TreeMap<>();
-        for (Integer product : requested) {
-            map.compute(product, (k, v) -> v == null ? 1 : v + 1);
-        }
-
-        for (Integer product : delivered) {
-            map.compute(product, (k, v) -> v == null ? -1 : v - 1);
-        }
+        var map = new TreeMap<Integer, Integer>();
+        requested.forEach(p -> map.merge(p, 1, Integer::sum));
+        delivered.forEach(p -> map.merge(p, -1, Integer::sum));
 
         return map.entrySet().stream()
                 .filter(e -> e.getValue() > 0)
                 .map(Map.Entry::getKey)
-                .collect(Collectors.toList());
+                .toList();
     }
 
 
     // Problem 2
     public int countPairs(List<Integer> socks) {
-        Map<Integer, Integer> map = new HashMap<>();
-        for (Integer sock : socks) {
-            map.compute(sock, (k, v) -> v == null ? 1 : v + 1);
-        }
+        var map = new HashMap<Integer, Integer>();
+        socks.forEach(s -> map.merge(s, 1, Integer::sum));
         return map.values().stream().mapToInt(sockCount -> sockCount / 2).sum();
     }
 
